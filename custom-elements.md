@@ -1,4 +1,4 @@
-# `oscd-component.ts`:
+# `compas-open.ts`:
 
 ## class: `OscdComponent`
 

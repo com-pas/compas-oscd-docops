@@ -1,13 +1,13 @@
 {
-  "name": "oscd-component",
-  "description": "Webcomponent oscd-component following open-wc recommendations",
+  "name": "compas-open",
+  "description": "Webcomponent compas-open following open-wc recommendations",
   "license": "Apache-2.0",
   "version": "0.0.0",
   "type": "module",
-  "main": "dist/oscd-component.js",
-  "module": "dist/oscd-component.js",
+  "main": "dist/compas-open.js",
+  "module": "dist/compas-open.js",
   "exports": {
-    ".": "./dist/oscd-component.js"
+    ".": "./dist/compas-open.js"
   },
   "scripts": {
     "analyze": "cem analyze",

@@ -1,10 +1,10 @@
 import { html, TemplateResult } from 'lit';
 
-import './oscd-component.js';
+import './compas-open.js';
 
 export default {
   title: 'OscdComponent',
-  component: 'oscd-component',
+  component: 'compas-open',
   argTypes: {
     title: { control: 'text' },
     counter: { control: 'number' },
@@ -31,13 +31,13 @@ const Template: Story<ArgTypes> = ({
   textColor,
   slot,
 }: ArgTypes) => html`
-  <oscd-component
-    style="--oscd-component-text-color: ${textColor || 'black'}"
+  <compas-open
+    style="--compas-open-text-color: ${textColor || 'black'}"
     .title=${title}
     .counter=${counter}
   >
     ${slot}
-  </oscd-component>
+  </compas-open>
 `;
 
 export const Regular = Template.bind({});
