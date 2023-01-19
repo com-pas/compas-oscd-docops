@@ -9,7 +9,7 @@ import { customElement, property } from 'lit/decorators.js';
  * @cssprop --compas-open-text-color - Controls the color of foo
  */
 @customElement('compas-open')
-export class OscdComponent extends LitElement {
+export class CompasOpen extends LitElement {
   static styles = css`
     :host {
       display: block;

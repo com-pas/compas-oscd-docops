@@ -3,7 +3,7 @@ import { html, TemplateResult } from 'lit';
 import './compas-open.js';
 
 export default {
-  title: 'OscdComponent',
+  title: 'CompasOpen',
   component: 'compas-open',
   argTypes: {
     title: { control: 'text' },

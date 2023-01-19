@@ -4,7 +4,7 @@ import { html } from 'lit';
 import { visualDiff } from '@web/test-runner-visual-regression';
 
 import './compas-open.js';
-import type { OscdComponent } from './compas-open.js';
+import type { CompasOpen } from './compas-open.js';
 
 const factor = process.env.CI ? 2 : 1;
 
@@ -17,7 +17,7 @@ function timeout(ms: number) {
 mocha.timeout(2000 * factor);
 
 describe('compas-open', () => {
-  let element: OscdComponent;
+  let element: CompasOpen;
 
   beforeEach(async () => {
     element = await fixture(

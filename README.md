@@ -78,7 +78,7 @@ To run a local development server that serves the basic demo located in `demo/in
 
 ## `compas-open.ts`:
 
-### class: `OscdComponent`
+### class: `CompasOpen`
 
 #### Superclass
 
@@ -121,9 +121,9 @@ To run a local development server that serves the basic demo located in `demo/in
 
 ### Exports
 
-| Kind | Name            | Declaration   | Module         | Package |
-| ---- | --------------- | ------------- | -------------- | ------- |
-| `js` | `OscdComponent` | OscdComponent | compas-open.ts |         |
+| Kind | Name         | Declaration | Module         | Package |
+| ---- | ------------ | ----------- | -------------- | ------- |
+| `js` | `CompasOpen` | CompasOpen  | compas-open.ts |         |
 
 
 
