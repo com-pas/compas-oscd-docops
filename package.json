@@ -2,7 +2,7 @@
   "name": "compas-open",
   "description": "Webcomponent compas-open following open-wc recommendations",
   "license": "Apache-2.0",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "main": "dist/compas-open.js",
   "module": "dist/compas-open.js",
