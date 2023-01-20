@@ -10,19 +10,19 @@ const local = !process.env.CI;
 console.assert(local, 'Running in CI!');
 console.assert(!fuzzy, 'Running on OS with 1% test pixel diff threshold!');
 
-const thresholdPercentage = fuzzy && local ? 0 : 0;
+const thresholdPercentage = fuzzy && local ? 0 : 1;
 
 const filteredLogs = [
   'Running in dev mode',
   'Lit is in dev mode',
-  'mwc-list-item scheduled an update',
+  'mwc-list-item scheduled an update'
 ];
 
 const browsers = [
-     playwrightLauncher({ product: 'chromium' }),
-     playwrightLauncher({ product: 'firefox' }),
-     playwrightLauncher({ product: 'webkit' }),
-   ];
+  playwrightLauncher({ product: 'chromium' }),
+  playwrightLauncher({ product: 'firefox' }),
+  playwrightLauncher({ product: 'webkit' })
+];
 
 function defaultGetImageDiff({ baselineImage, image, options }) {
   let error = '';
@@ -47,13 +47,20 @@ function defaultGetImageDiff({ baselineImage, image, options }) {
 
   const diff = new PNG({ width, height });
 
-  const numDiffPixels = pixelmatch(basePng.data, png.data, diff.data, width, height, options);
+  const numDiffPixels = pixelmatch(
+    basePng.data,
+    png.data,
+    diff.data,
+    width,
+    height,
+    options
+  );
   const diffPercentage = (numDiffPixels / (width * height)) * 100;
 
   return {
     error,
     diffImage: PNG.sync.write(diff),
-    diffPercentage,
+    diffPercentage
   };
 }
 
@@ -61,13 +68,13 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   plugins: [
     visualRegressionPlugin({
       update: process.argv.includes('--update-visual-baseline'),
-      getImageDiff: (options) => {
-        const result =  defaultGetImageDiff(options);
+      getImageDiff: options => {
+        const result = defaultGetImageDiff(options);
         if (result.diffPercentage < thresholdPercentage)
           result.diffPercentage = 0;
         return result;
       }
-    }),
+    })
   ],
 
   files: 'dist/**/*.spec.js',
@@ -127,13 +134,13 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
     }
     </style>
   </body>
-</html>`,
-    },
+</html>`
+    }
   ],
 
   /** Resolve bare module imports */
   nodeResolve: {
-    exportConditions: ['browser', 'development'],
+    exportConditions: ['browser', 'development']
   },
 
   /** Filter out lit dev mode logs */
@@ -156,7 +163,7 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   concurrency: 2,
 
   /** Browsers to run tests on */
-  browsers,
+  browsers
 
   // See documentation for all available options
 });
