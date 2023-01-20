@@ -1,78 +1,21 @@
-# \<oscd-component>
-
-## Renaming the component
-
-After instantiating this template repository, you will want to rename your component and then remove this section from the `README.md` file.
-
-To find places where you have to search for and replace the string `oscd-component` you can use
-
-```sh
-$ git grep oscd-component
-```
-
-<details>
-  <summary>=></summary>
-
-```
-README.md:# \<oscd-component>
-README.md:npm i oscd-component
-README.md:  import 'oscd-component';
-README.md:<oscd-component></oscd-component>
-index.html:    import './dist/oscd-component.js';
-index.html:        <oscd-component .title=${title}>
-index.html:        </oscd-component>
-oscd-component.stories.ts:import './oscd-component.js';
-oscd-component.stories.ts:  component: 'oscd-component',
-oscd-component.stories.ts:  <oscd-component
-oscd-component.stories.ts:    style="--oscd-component-text-color: ${textColor || 'black'}"
-oscd-component.stories.ts:  </oscd-component>
-oscd-component.spec.ts:import './oscd-component.js';
-oscd-component.spec.ts:import type { OscdComponent } from './oscd-component.js';
-oscd-component.spec.ts:      html`<oscd-component></oscd-component>`
-oscd-component.spec.ts:      html`<oscd-component></oscd-component>`
-oscd-component.spec.ts:      html`<oscd-component title="attribute title"></oscd-component>`
-oscd-component.spec.ts:      html`<oscd-component></oscd-component>`
-oscd-component.ts:@customElement('oscd-component')
-oscd-component.ts:      color: var(--oscd-component-text-color, #000);
-package.json:  "name": "oscd-component",
-package.json:  "description": "Webcomponent oscd-component following open-wc recommendations",
-package.json:  "main": "dist/oscd-component.js",
-package.json:  "module": "dist/oscd-component.js",
-package.json:    ".": "./dist/oscd-component.js"
-```
-
-</details>
-
-In order to replace all instances of the string `oscd-component` in your repository at once, you can use a tool like [git sed](https://github.com/ext/git-sed/blob/master/git-sed) in order to execute a substitute expression on all files in the worktree:
-
-```sh
-git sed s/oscd-component/my-widget/g
-```
-
-Make sure to use a dash `-` in the new component name and to rename all files with names starting with `oscd-component`:
-
-```
-oscd-component.stories.ts
-oscd-component.spec.ts
-oscd-component.ts
-```
+# \<compas-open>
 
 This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
 
 ## Installation
 
 ```bash
-npm i oscd-component
+npm i compas-open
 ```
 
 ## Usage
 
 ```html
 <script type="module">
-  import 'oscd-component';
+  import 'compas-open';
 </script>
 
-<oscd-component></oscd-component>
+<compas-open></compas-open>
 ```
 
 ## Linting and formatting
@@ -117,7 +60,6 @@ To build a production version of Storybook, run
 npm run storybook:build
 ```
 
-
 ## Tooling configs
 
 For most of the tools, the configuration is in the `package.json` to reduce the amount of files in your project.
@@ -131,3 +73,57 @@ npm start
 ```
 
 To run a local development server that serves the basic demo located in `demo/index.html`
+
+
+## `compas-open.ts`:
+
+### class: `CompasOpen`
+
+#### Superclass
+
+| Name         | Module | Package |
+| ------------ | ------ | ------- |
+| `LitElement` |        | lit     |
+
+#### Fields
+
+| Name      | Privacy | Type     | Default       | Description                                     | Inherited From |
+| --------- | ------- | -------- | ------------- | ----------------------------------------------- | -------------- |
+| `title`   |         | `string` | `'Hey there'` | The counter's title                             |                |
+| `counter` |         | `number` | `5`           | Another description without information content |                |
+
+#### Methods
+
+| Name          | Privacy | Description | Parameters | Return | Inherited From |
+| ------------- | ------- | ----------- | ---------- | ------ | -------------- |
+| `__increment` |         |             |            |        |                |
+
+#### Events
+
+| Name         | Type          | Description                                | Inherited From |
+| ------------ | ------------- | ------------------------------------------ | -------------- |
+| `fake-event` | `CustomEvent` | This is just to show off README generation |                |
+
+#### CSS Properties
+
+| Name                       | Default | Description               |
+| -------------------------- | ------- | ------------------------- |
+| `--compas-open-text-color` |         | Controls the color of foo |
+
+#### Slots
+
+| Name        | Description                |
+| ----------- | -------------------------- |
+| `something` | You can put something here |
+
+<hr/>
+
+### Exports
+
+| Kind | Name         | Declaration | Module         | Package |
+| ---- | ------------ | ----------- | -------------- | ------- |
+| `js` | `CompasOpen` | CompasOpen  | compas-open.ts |         |
+
+
+
+&copy; 1970 THE AUTHORS

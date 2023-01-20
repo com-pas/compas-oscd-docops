@@ -6,15 +6,15 @@ import { customElement, property } from 'lit/decorators.js';
  *
  * @fires fake-event - This is just to show off README generation
  *
- * @cssprop --oscd-component-text-color - Controls the color of foo
+ * @cssprop --compas-open-text-color - Controls the color of foo
  */
-@customElement('oscd-component')
-export class OscdComponent extends LitElement {
+@customElement('compas-open')
+export class CompasOpen extends LitElement {
   static styles = css`
     :host {
       display: block;
       padding: 25px;
-      color: var(--oscd-component-text-color, #000);
+      color: var(--compas-open-text-color, #000);
     }
   `;
 

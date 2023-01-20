@@ -1,6 +1,6 @@
-# `oscd-component.ts`:
+# `compas-open.ts`:
 
-## class: `OscdComponent`
+## class: `CompasOpen`
 
 ### Superclass
 

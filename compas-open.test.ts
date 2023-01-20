@@ -3,8 +3,8 @@ import { html } from 'lit';
 
 import { visualDiff } from '@web/test-runner-visual-regression';
 
-import './oscd-component.js';
-import type { OscdComponent } from './oscd-component.js';
+import './compas-open.js';
+import type { CompasOpen } from './compas-open.js';
 
 const factor = process.env.CI ? 2 : 1;
 
@@ -16,12 +16,12 @@ function timeout(ms: number) {
 
 mocha.timeout(2000 * factor);
 
-describe('oscd-component', () => {
-  let element: OscdComponent;
+describe('compas-open', () => {
+  let element: CompasOpen;
 
   beforeEach(async () => {
     element = await fixture(
-      html`<oscd-component title="Test Title" counter="41"></oscd-component>`
+      html`<compas-open title="Test Title" counter="41"></compas-open>`
     );
     document.body.prepend(element);
   });
@@ -29,12 +29,12 @@ describe('oscd-component', () => {
   afterEach(() => element.remove());
 
   it('displays the title and counter', async () => {
-    await visualDiff(element, 'oscd-component');
+    await visualDiff(element, 'compas-open');
   });
 
   it('increments the counter on button click', async () => {
     element.shadowRoot?.querySelector('button')?.click();
     await timeout(100);
-    await visualDiff(element, 'oscd-component-incremented');
+    await visualDiff(element, 'compas-open-incremented');
   });
 });
