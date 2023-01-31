@@ -26,7 +26,18 @@
     "deploy": "npm run storybook:build && gh-pages --dist 'storybook-static'"
   },
   "dependencies": {
-    "lit": "^2.0.2"
+    "@material/mwc-button": "0.22.1",
+    "@material/mwc-checkbox": "0.22.1",
+    "@material/mwc-dialog": "0.22.1",
+    "@material/mwc-icon": "0.22.1",
+    "@material/mwc-list": "0.22.1",
+    "@material/mwc-textfield": "0.22.1",
+    "@openscd/open-scd-core": "^0.0.1-rc2.8",
+    "eslint-plugin-babel": "^5.3.1",
+    "eslint-plugin-tsdoc": "^0.2.17",
+    "lit-element": "2.5.1",
+    "lit-html": "1.4.1",
+    "lit-translate": "^1.2.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.3.0",
@@ -50,61 +61,15 @@
     "lint-staged": "^10.5.4",
     "prettier": "^2.4.1",
     "tslib": "^2.3.1",
-    "typescript": "^4.5.2"
+    "typescript": "^4.9.5"
   },
   "customElements": "custom-elements.json",
   "eslintConfig": {
-    "parser": "@typescript-eslint/parser",
     "extends": [
-      "@open-wc",
-      "prettier"
-    ],
-    "plugins": [
-      "@typescript-eslint"
-    ],
-    "rules": {
-      "no-unused-vars": "off",
-      "sort-imports": [
-        "error",
-        {
-          "ignoreCase": true,
-          "allowSeparatedGroups": true
-        }
-      ],
-      "class-methods-use-this": [
-        "error",
-        {
-          "exceptMethods": [
-            "locale"
-          ]
-        }
-      ],
-      "@typescript-eslint/no-explicit-any": [
-        "error",
-        {
-          "ignoreRestArgs": true
-        }
-      ],
-      "import/no-extraneous-dependencies": [
-        "error",
-        {
-          "devDependencies": [
-            "**/*.test.ts",
-            "**/*.spec.ts",
-            "**/*.stories.ts",
-            "**/*.config.js"
-          ]
-        }
-      ],
-      "import/no-unresolved": "off",
-      "import/extensions": [
-        "error",
-        "always",
-        {
-          "ignorePackages": true
-        }
-      ]
-    }
+      "@open-wc/eslint-config",
+      "eslint-config-prettier",
+      "ts-standard"
+    ]
   },
   "prettier": {
     "singleQuote": true,

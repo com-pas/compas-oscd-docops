@@ -75,54 +75,6 @@ npm start
 To run a local development server that serves the basic demo located in `demo/index.html`
 
 
-## `compas-open.ts`:
-
-### class: `CompasOpen`
-
-#### Superclass
-
-| Name         | Module | Package |
-| ------------ | ------ | ------- |
-| `LitElement` |        | lit     |
-
-#### Fields
-
-| Name      | Privacy | Type     | Default       | Description                                     | Inherited From |
-| --------- | ------- | -------- | ------------- | ----------------------------------------------- | -------------- |
-| `title`   |         | `string` | `'Hey there'` | The counter's title                             |                |
-| `counter` |         | `number` | `5`           | Another description without information content |                |
-
-#### Methods
-
-| Name          | Privacy | Description | Parameters | Return | Inherited From |
-| ------------- | ------- | ----------- | ---------- | ------ | -------------- |
-| `__increment` |         |             |            |        |                |
-
-#### Events
-
-| Name         | Type          | Description                                | Inherited From |
-| ------------ | ------------- | ------------------------------------------ | -------------- |
-| `fake-event` | `CustomEvent` | This is just to show off README generation |                |
-
-#### CSS Properties
-
-| Name                       | Default | Description               |
-| -------------------------- | ------- | ------------------------- |
-| `--compas-open-text-color` |         | Controls the color of foo |
-
-#### Slots
-
-| Name        | Description                |
-| ----------- | -------------------------- |
-| `something` | You can put something here |
-
-<hr/>
-
-### Exports
-
-| Kind | Name         | Declaration | Module         | Package |
-| ---- | ------------ | ----------- | -------------- | ------- |
-| `js` | `CompasOpen` | CompasOpen  | compas-open.ts |         |
 
 
 
