@@ -1,4 +1,4 @@
-import { expect, fixture, fixtureSync, html } from '@open-wc/testing';
+import { expect, fixture, html } from '@open-wc/testing';
 
 import CompasOpenMenuPlugin from '../../src/menu/compas-open-plugin.js';
 import '../../src/menu/compas-open-plugin.js';
