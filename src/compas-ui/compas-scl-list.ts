@@ -8,7 +8,6 @@ import {
   state,
   TemplateResult,
 } from 'lit-element';
-import { translate } from 'lit-translate';
 
 import '@material/mwc-icon';
 import '@material/mwc-list';
@@ -16,7 +15,7 @@ import '@material/mwc-list/mwc-list-item';
 
 import { SelectedItemsChangedEvent } from '../to-be-made-a-dependency/oscd-filter-button.js';
 import '../to-be-made-a-dependency/filtered-list.js';
-import '../oscd-filter-button.js';
+import '../to-be-made-a-dependency/oscd-filter-button.js';
 
 /* Event that will be used when a SCL is selected from a list of SCL Documents. */
 export interface SclSelectedDetail {
@@ -35,7 +34,7 @@ export function newSclSelectedEvent(docId: string): SclSelectedEvent {
 export class CompasSclList extends LitElement {
   @property()
   type?: string;
-  @property()({ type: String })
+  @property()
   nameSpace = '';
 
   @state()
@@ -75,18 +74,18 @@ export class CompasSclList extends LitElement {
     }
     if (this.items?.length <= 0) {
       return html` <mwc-list>
-        <mwc-list-item><i>${translate('compas.noScls')}</i></mwc-list-item>
+        <mwc-list-item><i>No projects found in CoMPAS</i></mwc-list-item>
       </mwc-list>`;
     }
     const { filteredItems } = this;
     return html`
       <div class="filters">
-        <span>${translate('compas.sclFilter')}</span>
+        <span>Filter on:</span>
         <oscd-filter-button
           id="labelsFilter"
           multi="true"
           ?disabled="${this.labels.length <= 0}"
-          .header=${translate('compas.label.selectLabels')}
+          .header="Select labels to be shown"
           @selected-items-changed="${(e: SelectedItemsChangedEvent) => {
             this.selectedLabels = e.detail.selectedItems;
             this.requestUpdate('items');
@@ -136,7 +135,7 @@ export class CompasSclList extends LitElement {
           </filtered-list>`
         : html` <mwc-list>
             <mwc-list-item>
-              <i>${translate('compas.noFilteredScls')}</i>
+              <i>No projects found matching the filter(s)</i>
             </mwc-list-item>
           </mwc-list>`}
     `;

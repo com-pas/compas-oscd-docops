@@ -1,14 +1,21 @@
-import { expect, fixture, html } from '@open-wc/testing';
+import { expect, fixtureSync, html } from '@open-wc/testing';
 
+import { CompasOpenElement } from '../../src/compas-ui/compas-open.js';
 import '../../src/compas-ui/compas-open.js';
-import type { CompasOpenElement } from '../../src/compas-ui/compas-open.js';
 
-describe('CompasOpen', () => {
-  it('has a default allowLocalFile value', async () => {
-    const el = await fixture<CompasOpenElement>(
-      html`<compas-open></compas-open>`
-    );
+describe('compas-open', () => {
+  let element: CompasOpenElement;
 
-    expect(el.allowLocalFile).to.equal(true);
+  describe('When no local file can be selected', () => {
+    beforeEach(async () => {
+      element = fixtureSync(
+        html`<compas-open .allowLocalFile="${false}"></compas-open>`
+      );
+      await element;
+    });
+
+    it('looks like the latest snapshot', async () => {
+      await expect(element.shadowRoot?.querySelector('#scl-file')).to.be.null;
+    });
   });
 });

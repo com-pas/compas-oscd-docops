@@ -5,7 +5,6 @@ import {
   property,
   TemplateResult,
 } from 'lit-element';
-import { translate } from 'lit-translate';
 
 import '@material/mwc-list';
 import '@material/mwc-list/mwc-list-item';
@@ -26,15 +25,15 @@ export function newTypeSelectedEvent(type: string): TypeSelectedEvent {
 @customElement('compas-scltype-list')
 export class CompasSclTypeList extends LitElement {
   @property()
-  sclTypes!: Element[];
+  sclTypes: Element[] | undefined;
 
   @property()
   nameSpace = '';
 
   render(): TemplateResult {
-    if (this.sclTypes.length <= 0) {
+    if (!this.sclTypes || this.sclTypes.length <= 0) {
       return html` <mwc-list>
-        <mwc-list-item><i>${translate('compas.noSclTypes')}</i></mwc-list-item>
+        <mwc-list-item><i>No types found in CoMPAS</i></mwc-list-item>
       </mwc-list>`;
     }
 

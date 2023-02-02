@@ -6,7 +6,6 @@ import {
   query,
   TemplateResult,
 } from 'lit-element';
-import { translate } from 'lit-translate';
 
 import '@material/mwc-button';
 import { nothing } from 'lit-html';
@@ -77,7 +76,7 @@ export class CompasOpenElement extends LitElement {
       />
 
       <mwc-button
-        label="${translate('compas.open.selectFileButton')}"
+        label="Open file..."
         @click=${() => {
           this.sclFileUI.value = '';
           this.sclFileUI.click();
@@ -92,15 +91,16 @@ export class CompasOpenElement extends LitElement {
       ${this.allowLocalFile
         ? html`<wizard-divider></wizard-divider>
             <section>
-              <h3>${translate('compas.open.localTitle')}</h3>
+              <h3>Local</h3>
               ${this.renderFileSelect()}
             </section>`
         : nothing}
       <wizard-divider></wizard-divider>
       <section>
-        <h3>${translate('compas.open.compasTitle')}</h3>
+        <h3>CoMPAS</h3>
         <slot name="sclTypes"></slot>
         <slot name="sclList"></slot>
+        <slot />
       </section>
     `;
   }
