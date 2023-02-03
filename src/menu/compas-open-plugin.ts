@@ -4,7 +4,6 @@ import {
   LitElement,
   query,
   TemplateResult,
-  customElement,
   property,
 } from 'lit-element';
 import { Dialog } from '@material/mwc-dialog';

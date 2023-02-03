@@ -1,4 +1,5 @@
 import { html, TemplateResult } from 'lit-element';
+import CompasOpenMenuPlugin from './compas-open-plugin';
 import './compas-open-plugin.js';
 
 export default {
@@ -26,14 +27,17 @@ const Template: Story<ArgTypes> = ({
   allowLocalFile = true,
   selectedType = undefined,
   slot,
-}: ArgTypes) => html`
-  <compas-open-plugin
+}: ArgTypes) => {
+  if (customElements.get('compas-open-plugin') === undefined)
+    customElements.define('compas-open-plugin', CompasOpenMenuPlugin);
+
+  return html` <compas-open-plugin
     .allowLocalFile=${allowLocalFile}
     .selectedType=${selectedType}
   >
     ${slot}
-  </compas-open-plugin>
-`;
+  </compas-open-plugin>`;
+};
 
 export const Regular = Template.bind({});
 
