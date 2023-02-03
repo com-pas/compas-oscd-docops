@@ -5,6 +5,7 @@ import {
   query,
   TemplateResult,
   property,
+  state,
 } from 'lit-element';
 import { Dialog } from '@material/mwc-dialog';
 import { newOpenEvent } from '@openscd/open-scd-core';
@@ -31,9 +32,13 @@ export default class CompasOpenMenuPlugin extends LitElement {
   allowLocalFile = true;
 
   selectedType: string | undefined;
+  @property()
   sclTypes!: Element[];
+  @state()
   items!: Element[];
+  @state()
   labels: string[] = [];
+  @state()
   selectedLabels: string[] = [];
 
   async run(): Promise<void> {
@@ -109,6 +114,8 @@ export default class CompasOpenMenuPlugin extends LitElement {
         slot="sclList"
         .type=${this.selectedType}
         .items=${this.items}
+        .labels=${this.labels}
+        .selectedLabels=${this.selectedLabels}
         namespace="${SDS_NAMESPACE}"
         @scl-selected=${(evt: SclSelectedEvent) =>
           this.getSclDocument(evt.detail.docId)}
