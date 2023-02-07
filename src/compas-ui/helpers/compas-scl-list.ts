@@ -13,9 +13,9 @@ import '@material/mwc-icon';
 import '@material/mwc-list';
 import '@material/mwc-list/mwc-list-item';
 
-import { SelectedItemsChangedEvent } from '../to-be-made-a-dependency/oscd-filter-button.js';
-import '../to-be-made-a-dependency/filtered-list.js';
-import '../to-be-made-a-dependency/oscd-filter-button.js';
+import { SelectedItemsChangedEvent } from '../../to-be-made-a-dependency/oscd-filter-button.js';
+import '../../to-be-made-a-dependency/filtered-list.js';
+import '../../to-be-made-a-dependency/oscd-filter-button.js';
 
 /* Event that will be used when a SCL is selected from a list of SCL Documents. */
 export interface SclSelectedDetail {

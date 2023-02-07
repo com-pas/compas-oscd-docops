@@ -16,14 +16,14 @@ import {
 
 import { DocRetrievedEvent } from '../compas-ui/compas-open.js';
 import '../compas-ui/compas-open.js';
-import '../compas-ui/compas-scl-list.js';
+import '../compas-ui/helpers/compas-scl-list.js';
 import '../compas-ui/compas-scl-type-list.js';
 import '@material/mwc-button';
 import '@material/mwc-icon-button';
 import '@material/mwc-icon';
 import '@material/mwc-dialog';
 import { buildDocName } from '../to-be-made-a-dependency/foundation.js';
-import { SclSelectedEvent } from '../compas-ui/compas-scl-list.js';
+import { SclSelectedEvent } from '../compas-ui/helpers/compas-scl-list.js';
 
 export default class CompasOpenMenuPlugin extends LitElement {
   @query('mwc-dialog#compas-open-dlg')
@@ -31,6 +31,7 @@ export default class CompasOpenMenuPlugin extends LitElement {
   @property()
   allowLocalFile = true;
 
+  @property()
   selectedType: string | undefined;
   @property()
   sclTypes!: Element[];

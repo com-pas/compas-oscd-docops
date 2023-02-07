@@ -2,12 +2,13 @@ import { html, TemplateResult } from 'lit-element';
 import CompasOpenMenuPlugin from './compas-open-plugin';
 import './compas-open-plugin.js';
 
+const typesArray = ['IID', 'SCD', 'FOO', 'BAR'];
 export default {
   title: 'CompasOpen',
   component: 'compas-open-plugin',
   argTypes: {
     allowLocalFile: { control: 'boolean' },
-    selectedType: { control: 'string' },
+    selectedType: { control: 'select', options: typesArray },
   },
 };
 
@@ -25,7 +26,7 @@ interface ArgTypes {
 
 const Template: Story<ArgTypes> = ({
   allowLocalFile = true,
-  selectedType = undefined,
+  selectedType,
   slot,
 }: ArgTypes) => {
   if (customElements.get('compas-open-plugin') === undefined)
