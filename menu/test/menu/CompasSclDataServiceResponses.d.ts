@@ -1,0 +1,10 @@
+import { SinonStub } from 'sinon';
+export declare const TYPE_ENTRY_ELEMENT_NAME = "Type";
+export declare const BASIC_TYPE_LIST_RESPONSE: string;
+export declare const EMPTY_ITEM_LIST_RESPONSE: string;
+export declare const ITEM_ENTRY_ELEMENT_NAME = "Item";
+export declare const BASIC_ITEM_LIST_RESPONSE: string;
+export declare const ITEM_LIST_WITH_LABELS_RESPONSE: string;
+export declare const VERSION_ENTRY_ELEMENT_NAME = "HistoryItem";
+export declare const BASIC_VERSIONS_LIST_RESPONSE: string;
+export declare function stubFetchResponseFunction(element: any, functionName: string, response: string | undefined, listElementName: string, callback: (result: Element[]) => any): SinonStub<any[], void>;

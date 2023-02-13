@@ -1,0 +1,16 @@
+export declare const COMPAS_NAMESPACE = "https://www.lfenergy.org/compas/extension/v1";
+export declare const COMPAS_PREFIX = "compas";
+export declare const COMPAS_SCL_PRIVATE_TYPE = "compas_scl";
+export declare const COMPAS_LABELS_MAXIMUM = 20;
+export declare function getPrivate(parent: Element, type: string): Element | null;
+export declare function createPrivate(parent: Element, type: string): Element;
+export declare function getCompasSclName(privateElement: Element | null): Element | null;
+export declare function createCompasSclName(parent: Element, value: string): Element;
+export declare function copyCompasSclName(fromParent: Element | null, toParent: Element | null): void;
+export declare function getCompasSclFileType(privateElement: Element | null): Element | null;
+export declare function copyCompasSclFileType(fromParent: Element | null, toParent: Element | null): void;
+export declare function getLabels(privateElement: Element): Element | null;
+export declare function createLabels(privateElement: Element): Element;
+export declare function createLabel(labelsElement: Element, value: string): Element;
+export declare function copyCompasLabels(fromParent: Element | null, toParent: Element | null): void;
+export declare function addPrefixAndNamespaceToDocument(element: Element, namespace: string, prefix: string): void;

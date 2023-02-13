@@ -1,0 +1,12 @@
+export declare const NOT_FOUND_ERROR = "NotFoundError";
+export declare const APPLICATION_ERROR = "ApplicationError";
+export declare const SERVER_ERROR = "ServerError";
+export declare const COMMONS_NAMESPACE = "https://www.lfenergy.org/compas/commons/v1";
+export declare function handleResponse(response: Response): Promise<string>;
+export declare function processErrorMessage(response: Response): Promise<string>;
+export declare function extractErrorMessage(doc: Document): string | undefined;
+export declare function parseXml(textContent: string): Promise<Document>;
+export declare function extractSclFromResponse(response: Document): Promise<Document>;
+export declare function handleError(error: Error): Promise<never>;
+export declare function getWebsocketUri(settingsUrl: string): string;
+export declare function getWebsocketPort(): string;
