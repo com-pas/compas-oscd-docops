@@ -37,7 +37,7 @@ export function CompasSclDataService() {
   }
 
   function useWebsocket(): boolean {
-    return true;
+    return false;
     // return CompasSettings().useWebsockets();
   }
 

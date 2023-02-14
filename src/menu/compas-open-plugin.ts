@@ -17,7 +17,7 @@ import {
 import { DocRetrievedEvent } from '../compas-ui/compas-open.js';
 import '../compas-ui/compas-open.js';
 import '../compas-ui/helpers/compas-scl-list.js';
-import '../compas-ui/compas-scl-type-list.js';
+import '../compas-ui/helpers/compas-scl-type-list.js';
 import '@material/mwc-button';
 import '@material/mwc-icon-button';
 import '@material/mwc-icon';
@@ -47,7 +47,7 @@ export default class CompasOpenMenuPlugin extends LitElement {
   }
 
   firstUpdated(): void {
-    this.dialog.show();
+    // this.dialog.show();
     this.fetchTypeList();
     this.fetchList();
   }
@@ -87,6 +87,7 @@ export default class CompasOpenMenuPlugin extends LitElement {
     if (doc instanceof Document) {
       const docName = buildDocName(doc.documentElement);
       this.dispatchEvent(newOpenEvent(doc, docName!));
+      this.dialog.close();
     }
   }
 
@@ -142,6 +143,7 @@ export default class CompasOpenMenuPlugin extends LitElement {
           this.dispatchEvent(
             newOpenEvent(event.detail.doc, event.detail.docName!)
           );
+          this.dialog.close();
         }}
       >
         ${this.selectedType ? this.renderSclList() : this.renderSclTypeList()}

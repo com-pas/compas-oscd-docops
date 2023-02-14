@@ -12,5 +12,5 @@
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "root": true,
-  "ignorePatterns": ["**/*.html"]
+  "ignorePatterns": ["**/*.html", "*.config.js"]
 }
