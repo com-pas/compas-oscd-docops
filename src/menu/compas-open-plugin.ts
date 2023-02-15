@@ -24,7 +24,7 @@ import '@material/mwc-icon';
 import '@material/mwc-dialog';
 import { buildDocName } from '../to-be-made-a-dependency/foundation.js';
 import { SclSelectedEvent } from '../compas-ui/helpers/compas-scl-list.js';
-
+import { TypeSelectedEvent } from '../compas-ui/helpers/compas-scl-type-list.js';
 export default class CompasOpenMenuPlugin extends LitElement {
   @query('mwc-dialog#compas-open-dlg')
   dialog!: Dialog;
@@ -105,6 +105,8 @@ export default class CompasOpenMenuPlugin extends LitElement {
       slot="sclTypes"
       .sclTypes=${this.sclTypes}
       namespace="${SDS_NAMESPACE}"
+      @typeSelected=${(evt: TypeSelectedEvent) =>
+        (this.selectedType = evt.detail.type)}
     ></compas-scltype-list>`;
   }
 
