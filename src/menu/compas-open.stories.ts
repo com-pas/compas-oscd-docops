@@ -14,8 +14,8 @@ export default {
 
 class SBCompasOpenMenuPlugin extends CompasOpenMenuPlugin {
   firstUpdated() {
-    super.run();
     super.firstUpdated();
+    super.run();
   }
 }
 
