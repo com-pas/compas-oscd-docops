@@ -47,7 +47,6 @@ export default class CompasOpenMenuPlugin extends LitElement {
   }
 
   firstUpdated(): void {
-    // this.dialog.show();
     this.fetchTypeList();
     this.fetchList();
   }

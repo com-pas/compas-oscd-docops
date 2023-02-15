@@ -12,6 +12,13 @@ export default {
   },
 };
 
+class SBCompasOpenMenuPlugin extends CompasOpenMenuPlugin {
+  firstUpdated() {
+    super.run();
+    super.firstUpdated();
+  }
+}
+
 interface Story<T> {
   (args: T): TemplateResult;
   args?: Partial<T>;
@@ -29,15 +36,15 @@ const Template: Story<ArgTypes> = ({
   selectedType,
   slot,
 }: ArgTypes) => {
-  if (customElements.get('compas-open-plugin') === undefined)
-    customElements.define('compas-open-plugin', CompasOpenMenuPlugin);
+  if (customElements.get('sb-compas-open-plugin') === undefined)
+    customElements.define('sb-compas-open-plugin', SBCompasOpenMenuPlugin);
 
-  return html` <compas-open-plugin
+  return html` <sb-compas-open-plugin
     .allowLocalFile=${allowLocalFile}
     .selectedType=${selectedType}
   >
     ${slot}
-  </compas-open-plugin>`;
+  </sb-compas-open-plugin>`;
 };
 
 export const Regular = Template.bind({});
