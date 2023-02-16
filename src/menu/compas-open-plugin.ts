@@ -36,19 +36,31 @@ export default class CompasOpenMenuPlugin extends LitElement {
   @property()
   sclTypes!: Element[];
   @state()
-  items!: Element[];
+  items: Element[] | undefined;
   @state()
   labels: string[] = [];
   @state()
   selectedLabels: string[] = [];
 
   async run(): Promise<void> {
+    this.resetProperties();
     this.dialog.show();
   }
 
   firstUpdated(): void {
     this.fetchTypeList();
-    this.fetchList();
+  }
+
+  update(changedProperties: Map<string, unknown>) {
+    if (changedProperties.has('selectedType')) {
+      this.fetchList();
+    }
+    super.update(changedProperties);
+  }
+
+  resetProperties(): void {
+    this.selectedType = undefined;
+    this.items = undefined;
   }
 
   fetchTypeList(): void {
@@ -112,27 +124,28 @@ export default class CompasOpenMenuPlugin extends LitElement {
 
   renderSclList(): TemplateResult {
     return html`
-      <p>Select project ${this.selectedType ?? ''}</p>
-      <compas-scl-list
-        slot="sclList"
-        .type=${this.selectedType}
-        .items=${this.items}
-        .labels=${this.labels}
-        .selectedLabels=${this.selectedLabels}
-        namespace="${SDS_NAMESPACE}"
-        @scl-selected=${(evt: SclSelectedEvent) =>
-          this.getSclDocument(evt.detail.docId)}
-      >
-      </compas-scl-list>
-      <mwc-button
-        id="reselect-type"
-        label="Other type..."
-        icon="arrow_back"
-        @click=${() => {
-          this.selectedType = undefined;
-        }}
-      >
-      </mwc-button>
+      <section slot="sclList">
+        <p>Select project ${this.selectedType ?? ''}</p>
+        <compas-scl-list
+          .type=${this.selectedType}
+          .items=${this.items}
+          .labels=${this.labels}
+          .selectedLabels=${this.selectedLabels}
+          namespace="${SDS_NAMESPACE}"
+          @scl-selected=${(evt: SclSelectedEvent) =>
+            this.getSclDocument(evt.detail.docId)}
+        >
+        </compas-scl-list>
+        <mwc-button
+          id="reselect-type"
+          label="Other type..."
+          icon="arrow_back"
+          @click=${() => {
+            this.selectedType = undefined;
+          }}
+        >
+        </mwc-button>
+      </section>
     `;
   }
 
