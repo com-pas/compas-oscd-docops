@@ -2,7 +2,7 @@ import { fixture, html } from '@open-wc/testing';
 
 import { visualDiff } from '@web/test-runner-visual-regression';
 
-import './compas-open.js';
+import '../../src/compas-ui/compas-open.js';
 import { CompasOpenElement } from '../../src/compas-ui/compas-open.js';
 
 const factor = process.env.CI ? 2 : 1;
