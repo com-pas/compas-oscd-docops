@@ -38,7 +38,7 @@ export class CompasSclList extends LitElement {
   nameSpace = '';
 
   @state()
-  private items?: Element[];
+  private items: Element[] | undefined;
 
   @state()
   private labels: string[] = [];
@@ -82,6 +82,9 @@ export class CompasSclList extends LitElement {
       <div class="filters">
         <span>Filter on:</span>
         <oscd-filter-button
+          .icon=${this.labels.length != this.selectedLabels.length
+            ? 'label'
+            : 'label_off'}
           id="labelsFilter"
           multi="true"
           ?disabled="${this.labels.length <= 0}"
@@ -93,13 +96,6 @@ export class CompasSclList extends LitElement {
             this.requestUpdate('selectedLabels');
           }}"
         >
-          <span slot="icon">
-            <mwc-icon>
-              ${this.labels.length != this.selectedLabels.length
-                ? 'label'
-                : 'label_off'}
-            </mwc-icon>
-          </span>
           ${this.labels.map(label => {
             return html` <mwc-check-list-item
               value="${label}"
