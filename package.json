@@ -8,10 +8,12 @@
   "exports": {
     ".": "./dist/menu/compas-open-plugin.js"
   },
+  "type": "module",
   "scripts": {
     "analyze": "cem analyze",
     "start": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wds\"",
-    "build": "rimraf dist && rollup -c rollup.config.js",
+    "build": "rimraf dist &&tsc && npm run analyze -- --exclude dist",
+    "build:module": "rimraf dist && rollup -c rollup.config.js",
     "prepublish": "tsc && npm run analyze -- --exclude dist",
     "lint": "eslint --ext .ts,.html . --ignore-path .gitignore && prettier \"**/*.ts\" --check --ignore-path .gitignore",
     "format": "eslint --ext .ts,.html . --fix --ignore-path .gitignore && prettier \"**/*.ts\" --write --ignore-path .gitignore",
