@@ -35,15 +35,15 @@ export default class CompasOpenMenuPlugin extends LitElement {
   selectedType: string | undefined;
   @property()
   sclTypes!: Element[];
-  @state()
+  @property()
   items: Element[] | undefined;
-  @state()
+  @property()
   labels: string[] = [];
-  @state()
+  @property()
   selectedLabels: string[] = [];
 
   async run(): Promise<void> {
-    this.resetProperties();
+    //this.resetProperties();
     this.dialog.show();
   }
 

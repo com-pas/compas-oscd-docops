@@ -5,9 +5,10 @@ import {
   property,
   TemplateResult,
 } from 'lit-element';
-
+import { translate } from 'lit-translate';
 import '@material/mwc-list';
 import '@material/mwc-list/mwc-list-item';
+import './compas-loading.js';
 
 /* Event that will be used when a SCL Type is selected from a list of types. */
 export interface TypeSelectedDetail {
@@ -31,7 +32,14 @@ export class CompasSclTypeList extends LitElement {
   nameSpace = '';
 
   render(): TemplateResult {
-    if (!this.sclTypes || this.sclTypes.length <= 0) {
+    if (!this.sclTypes) {
+      return html`
+        <compas-loading
+          .message=${translate('compas.loading.types')}
+        ></compas-loading>
+      `;
+    }
+    if (this.sclTypes.length <= 0) {
       return html` <mwc-list>
         <mwc-list-item><i>No types found in CoMPAS</i></mwc-list-item>
       </mwc-list>`;

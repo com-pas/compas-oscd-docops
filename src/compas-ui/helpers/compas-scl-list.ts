@@ -12,10 +12,12 @@ import {
 import '@material/mwc-icon';
 import '@material/mwc-list';
 import '@material/mwc-list/mwc-list-item';
+import { translate } from 'lit-translate';
 
 import { SelectedItemsChangedEvent } from '../../to-be-made-a-dependency/oscd-filter-button.js';
 import '../../to-be-made-a-dependency/filtered-list.js';
 import '../../to-be-made-a-dependency/oscd-filter-button.js';
+import './compas-loading.js';
 
 /* Event that will be used when a SCL is selected from a list of SCL Documents. */
 export interface SclSelectedDetail {
@@ -37,16 +39,16 @@ export class CompasSclList extends LitElement {
   @property()
   nameSpace = '';
 
-  @state()
+  @property()
   private items: Element[] | undefined;
 
-  @state()
+  @property()
   private labels: string[] = [];
 
-  @state()
+  @property()
   private selectedLabels: string[] = [];
 
-  @state()
+  @property()
   private get filteredItems(): Element[] | undefined {
     // If items are still being retrieved, return undefined.
     if (!this.items) {
@@ -70,7 +72,11 @@ export class CompasSclList extends LitElement {
 
   render(): TemplateResult {
     if (!this.items) {
-      return html` <compas-loading></compas-loading> `;
+      return html`
+        <compas-loading
+          .message=${translate('compas.loading.files')}
+        ></compas-loading>
+      `;
     }
     if (this.items?.length <= 0) {
       return html` <mwc-list>

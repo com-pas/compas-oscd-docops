@@ -1,21 +1,35 @@
 import { html, TemplateResult } from 'lit-element';
 import CompasOpenMenuPlugin from './compas-open-plugin';
 import './compas-open-plugin.js';
+import { parseXml } from '../service/foundation.js';
+import {
+  BASIC_ITEM_LIST_RESPONSE,
+  BASIC_TYPE_LIST_RESPONSE,
+  ITEM_LIST_WITH_LABELS_RESPONSE,
+} from '../../test/menu/CompasSclDataServiceResponses.js';
 
 const typesArray = ['IID', 'SCD', 'FOO', 'BAR'];
+const typeArray: Element[] = [];
+const fileArray: Element[] = [];
+const labelArray: string[] = [];
+const selectedLabelArray: string[] = [];
 export default {
   title: 'CompasOpen',
   component: 'compas-open-plugin',
   argTypes: {
     allowLocalFile: { control: 'boolean' },
     selectedType: { control: 'select', options: typesArray },
+    sclTypes: { control: 'array', options: typeArray },
+    items: { control: 'array', options: fileArray },
+    labels: { control: 'array', option: labelArray },
+    selectedLabels: { control: 'array', option: selectedLabelArray },
   },
 };
 
 class SBCompasOpenMenuPlugin extends CompasOpenMenuPlugin {
   firstUpdated() {
-    super.firstUpdated();
     super.run();
+    super.firstUpdated();
   }
 }
 
@@ -28,12 +42,20 @@ interface Story<T> {
 interface ArgTypes {
   allowLocalFile?: boolean;
   selectedType?: string;
+  sclTypes?: Element[];
+  items?: Element[];
+  labels?: string[];
+  selectedLabels?: string[];
   slot?: TemplateResult;
 }
 
 const Template: Story<ArgTypes> = ({
   allowLocalFile = true,
   selectedType,
+  sclTypes,
+  items,
+  labels,
+  selectedLabels,
   slot,
 }: ArgTypes) => {
   if (customElements.get('sb-compas-open-plugin') === undefined)
@@ -42,6 +64,10 @@ const Template: Story<ArgTypes> = ({
   return html` <sb-compas-open-plugin
     .allowLocalFile=${allowLocalFile}
     .selectedType=${selectedType}
+    .sclTypes=${sclTypes}
+    .items=${items}
+    .labels=${labels}
+    .selectedLabels=${selectedLabels}
   >
     ${slot}
   </sb-compas-open-plugin>`;
@@ -49,13 +75,56 @@ const Template: Story<ArgTypes> = ({
 
 export const Regular = Template.bind({});
 
-export const SelectedType = Template.bind({});
-SelectedType.args = {
+export const SelectedTypeLoadingFileList = Template.bind({});
+SelectedTypeLoadingFileList.args = {
   allowLocalFile: true,
-  selectedType: 'SCD_Test',
+  selectedType: 'SCD',
 };
 
-// export const CustomCounter = Template.bind({});
-// CustomCounter.args = {
-//   counter: 123456,
-// };
+export const EmptyFileList = Template.bind({});
+EmptyFileList.args = {
+  allowLocalFile: true,
+  selectedType: 'SCD',
+  items: [],
+};
+
+export const WithFileListAndNoLabels = Template.bind({});
+const typeResponse = await parseXml(BASIC_TYPE_LIST_RESPONSE);
+const itemResponse = await parseXml(BASIC_ITEM_LIST_RESPONSE);
+
+WithFileListAndNoLabels.args = {
+  allowLocalFile: true,
+  labels: [],
+  selectedLabels: [],
+  selectedType: 'SCD',
+  sclTypes: Array.from(typeResponse.querySelectorAll('Type') ?? []),
+  items: Array.from(itemResponse.querySelectorAll('Item') ?? []),
+};
+
+export const WithFileListAndLabels = Template.bind({});
+const itemWithLabelsResponse = await parseXml(ITEM_LIST_WITH_LABELS_RESPONSE);
+const foundLabels = [
+  ...new Set(
+    Array.from(
+      itemWithLabelsResponse.querySelectorAll('Item > Label') ?? []
+    ).map(label => label.textContent || '')
+  ),
+];
+WithFileListAndLabels.args = {
+  allowLocalFile: true,
+  selectedType: 'SCD',
+  sclTypes: Array.from(typeResponse.querySelectorAll('Type') ?? []),
+  items: Array.from(itemWithLabelsResponse.querySelectorAll('Item') ?? []),
+  labels: foundLabels,
+  selectedLabels: foundLabels,
+};
+
+export const WithFileListAndLabelSelected = Template.bind({});
+WithFileListAndLabelSelected.args = {
+  allowLocalFile: true,
+  selectedType: 'SCD',
+  sclTypes: Array.from(typeResponse.querySelectorAll('Type') ?? []),
+  items: Array.from(itemWithLabelsResponse.querySelectorAll('Item') ?? []),
+  labels: foundLabels,
+  selectedLabels: [foundLabels[1]],
+};
