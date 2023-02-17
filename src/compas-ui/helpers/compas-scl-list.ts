@@ -80,13 +80,13 @@ export class CompasSclList extends LitElement {
     }
     if (this.items?.length <= 0) {
       return html` <mwc-list>
-        <mwc-list-item><i>No projects found in CoMPAS</i></mwc-list-item>
+        <mwc-list-item><i>${translate('compas.noScls')}</i></mwc-list-item>
       </mwc-list>`;
     }
     const { filteredItems } = this;
     return html`
       <div class="filters">
-        <span>Filter on:</span>
+        <span>${translate('compas.sclFilter')}</span>
         <oscd-filter-button
           .icon=${this.labels.length != this.selectedLabels.length
             ? 'label'
@@ -94,7 +94,7 @@ export class CompasSclList extends LitElement {
           id="labelsFilter"
           multi="true"
           ?disabled="${this.labels.length <= 0}"
-          .header="Select labels to be shown"
+          .header=${translate('compas.label.selectLabels')}
           @selected-items-changed="${(e: SelectedItemsChangedEvent) => {
             this.selectedLabels = e.detail.selectedItems;
             this.requestUpdate('items');
@@ -137,7 +137,7 @@ export class CompasSclList extends LitElement {
           </filtered-list>`
         : html` <mwc-list>
             <mwc-list-item>
-              <i>No projects found matching the filter(s)</i>
+              <i>${translate('compas.noFilteredScls')}</i>
             </mwc-list-item>
           </mwc-list>`}
     `;

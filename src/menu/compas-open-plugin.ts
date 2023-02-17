@@ -7,6 +7,8 @@ import {
   property,
   state,
 } from 'lit-element';
+import { translate, registerTranslateConfig, use } from 'lit-translate';
+import { loader } from '../translations/loader.js';
 import { Dialog } from '@material/mwc-dialog';
 import { newOpenEvent } from '@openscd/open-scd-core';
 import {
@@ -41,9 +43,13 @@ export default class CompasOpenMenuPlugin extends LitElement {
   labels: string[] = [];
   @property()
   selectedLabels: string[] = [];
+  @property()
+  locale = 'en';
 
   async run(): Promise<void> {
     //this.resetProperties();
+    registerTranslateConfig({ loader, empty: key => key });
+    use(this.locale);
     this.dialog.show();
   }
 
@@ -138,7 +144,7 @@ export default class CompasOpenMenuPlugin extends LitElement {
         </compas-scl-list>
         <mwc-button
           id="reselect-type"
-          label="Other type..."
+          label="${translate('compas.open.otherTypeButton')}"
           icon="arrow_back"
           @click=${() => {
             this.selectedType = undefined;
@@ -150,7 +156,10 @@ export default class CompasOpenMenuPlugin extends LitElement {
   }
 
   render(): TemplateResult {
-    return html`<mwc-dialog id="compas-open-dlg" heading="Open project">
+    return html`<mwc-dialog
+      id="compas-open-dlg"
+      heading="${translate('compas.open.title')}"
+    >
       <compas-open
         .allowLocalFile=${this.allowLocalFile}
         @doc-retrieved=${(event: DocRetrievedEvent) => {
@@ -165,12 +174,17 @@ export default class CompasOpenMenuPlugin extends LitElement {
       <mwc-button
         slot="secondaryAction"
         icon=""
-        label="Close"
+        label="${translate('close')}"
         dialogAction="close"
         style="--mdc-theme-primary: var(--mdc-theme-error)"
       >
       </mwc-button>
     </mwc-dialog>`;
+  }
+
+  constructor() {
+    super();
+    this.addEventListener('closed', this.resetProperties);
   }
 
   static styles = css`
