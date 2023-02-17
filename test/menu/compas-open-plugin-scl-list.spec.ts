@@ -81,7 +81,7 @@ describe('compas-open-menu with compas-scl-list', () => {
         plugin.shadowRoot
           ?.querySelector('compas-scl-list')
           ?.shadowRoot?.querySelector('mwc-list-item')?.textContent
-      ).to.equals('No projects found in CoMPAS');
+      ).to.equals('[compas.noScls]');
     });
   });
 
