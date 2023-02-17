@@ -55,6 +55,7 @@ export default class CompasOpenMenuPlugin extends LitElement {
 
   firstUpdated(): void {
     this.fetchTypeList();
+    this.dialog.addEventListener('closed', this.resetProperties.bind(this));
   }
 
   update(changedProperties: Map<string, unknown>) {
@@ -180,11 +181,6 @@ export default class CompasOpenMenuPlugin extends LitElement {
       >
       </mwc-button>
     </mwc-dialog>`;
-  }
-
-  constructor() {
-    super();
-    this.addEventListener('closed', this.resetProperties);
   }
 
   static styles = css`
