@@ -47,7 +47,6 @@ export default class CompasOpenMenuPlugin extends LitElement {
   locale = 'en';
 
   async run(): Promise<void> {
-    //this.resetProperties();
     registerTranslateConfig({ loader, empty: key => key });
     use(this.locale);
     this.dialog.show();
@@ -107,16 +106,6 @@ export default class CompasOpenMenuPlugin extends LitElement {
       this.dispatchEvent(newOpenEvent(doc, docName!));
       this.dialog.close();
     }
-  }
-
-  private async openDoc(event: DocRetrievedEvent): Promise<void> {
-    if (event.detail.localFile) {
-      // this.dispatchEvent(newLogEvent({ kind: 'reset' }));
-      this.dispatchEvent(newOpenEvent(event.detail.doc, event.detail.docName!));
-    } else {
-      // updateDocumentInOpenSCD(this, event.detail.doc, event.detail.docName);
-    }
-    this.dialog.close();
   }
 
   renderSclTypeList(): TemplateResult {
