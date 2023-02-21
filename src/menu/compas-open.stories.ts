@@ -73,7 +73,18 @@ const Template: Story<ArgTypes> = ({
   </sb-compas-open-plugin>`;
 };
 
-export const Regular = Template.bind({});
+export const LoadingTypesList = Template.bind({});
+
+export const WithTypesList = Template.bind({});
+const typeResponse = await parseXml(BASIC_TYPE_LIST_RESPONSE);
+WithTypesList.args = {
+  allowLocalFile: true,
+  labels: [],
+  selectedLabels: [],
+  selectedType: undefined,
+  sclTypes: Array.from(typeResponse.querySelectorAll('Type') ?? []),
+  items: [],
+};
 
 export const SelectedTypeLoadingFileList = Template.bind({});
 SelectedTypeLoadingFileList.args = {
@@ -89,7 +100,6 @@ EmptyFileList.args = {
 };
 
 export const WithFileListAndNoLabels = Template.bind({});
-const typeResponse = await parseXml(BASIC_TYPE_LIST_RESPONSE);
 const itemResponse = await parseXml(BASIC_ITEM_LIST_RESPONSE);
 
 WithFileListAndNoLabels.args = {
