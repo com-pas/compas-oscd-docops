@@ -13,7 +13,7 @@ import {
   stubFetchResponseFunction,
   TYPE_ENTRY_ELEMENT_NAME,
 } from './CompasSclDataServiceResponses.js';
-import '../../src/compas-ui/compas-scl-type-list.js';
+import '../../src/compas-ui/helpers/compas-scl-type-list.js';
 import CompasOpenMenuPlugin from '../../src/menu/compas-open-plugin.js';
 import '../../src/menu/compas-open-plugin.js';
 
