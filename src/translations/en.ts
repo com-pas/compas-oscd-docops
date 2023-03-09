@@ -7,7 +7,6 @@ export const en = {
     noScls: 'No projects found in CoMPAS',
     sclFilter: 'Filter on:',
     noFilteredScls: 'No projects found matching the filter(s)',
-    noSclVersions: 'No versions found for this project in CoMPAS',
     sclType: 'SCL Type',
     loading: {
       default: 'Loading...',

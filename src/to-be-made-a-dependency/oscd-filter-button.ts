@@ -17,6 +17,22 @@ import './filtered-list.js';
 import { FilteredList } from './filtered-list.js';
 import { Dialog } from '@material/mwc-dialog';
 
+export interface SelectedItemsChangedDetail {
+  selectedItems: string[];
+}
+export type SelectedItemsChangedEvent = CustomEvent<SelectedItemsChangedDetail>;
+function newSelectedItemsChangedEvent(
+  selectedItems: string[],
+  eventInitDict?: CustomEventInit<SelectedItemsChangedDetail>
+): SelectedItemsChangedEvent {
+  return new CustomEvent<SelectedItemsChangedDetail>('selected-items-changed', {
+    bubbles: true,
+    composed: true,
+    ...eventInitDict,
+    detail: { selectedItems, ...eventInitDict?.detail },
+  });
+}
+
 /**
  * A mwc-list with mwc-textfield that filters the list items for given or separated terms
  */
@@ -82,22 +98,6 @@ export class FilterButton extends FilteredList {
       --mdc-dialog-max-height: calc(100vh - 150px);
     }
   `;
-}
-
-export interface SelectedItemsChangedDetail {
-  selectedItems: string[];
-}
-export type SelectedItemsChangedEvent = CustomEvent<SelectedItemsChangedDetail>;
-function newSelectedItemsChangedEvent(
-  selectedItems: string[],
-  eventInitDict?: CustomEventInit<SelectedItemsChangedDetail>
-): SelectedItemsChangedEvent {
-  return new CustomEvent<SelectedItemsChangedDetail>('selected-items-changed', {
-    bubbles: true,
-    composed: true,
-    ...eventInitDict,
-    detail: { selectedItems, ...eventInitDict?.detail },
-  });
 }
 
 declare global {

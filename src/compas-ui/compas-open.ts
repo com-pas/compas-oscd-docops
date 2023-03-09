@@ -39,17 +39,6 @@ export class CompasOpenElement extends LitElement {
   @query('#scl-file')
   private sclFileUI!: HTMLInputElement;
 
-  /* private async getSclDocument(docId?: string): Promise<void> {
-    const doc = await CompasSclDataService()
-      .getSclDocument(this, this.selectedType ?? '', docId ?? '')
-      .catch(reason => createLogEvent(this, reason));
-
-    if (doc instanceof Document) {
-      const docName = buildDocName(doc.documentElement);
-      this.dispatchEvent(newDocRetrievedEvent(false, doc, docName, docId));
-    }
-  } */
-
   private async getSclFile(fileObj: {
     isLocal: boolean;
     evt: Event;

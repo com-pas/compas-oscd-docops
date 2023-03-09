@@ -70,19 +70,21 @@ export class CompasSclList extends LitElement {
     });
   }
 
-  render(): TemplateResult {
-    if (!this.items) {
-      return html`
-        <compas-loading
-          .message=${translate('compas.loading.files')}
-        ></compas-loading>
-      `;
-    }
-    if (this.items?.length <= 0) {
-      return html` <mwc-list>
-        <mwc-list-item><i>${translate('compas.noScls')}</i></mwc-list-item>
-      </mwc-list>`;
-    }
+  private renderLoadingBar(): TemplateResult {
+    return html`
+      <compas-loading
+        .message=${translate('compas.loading.files')}
+      ></compas-loading>
+    `;
+  }
+
+  private renderNoScls(): TemplateResult {
+    return html`<mwc-list>
+      <mwc-list-item><i>${translate('compas.noScls')}</i></mwc-list-item>
+    </mwc-list>`;
+  }
+
+  private renderSclList(): TemplateResult {
     const { filteredItems } = this;
     return html`
       <div class="filters">
@@ -141,6 +143,14 @@ export class CompasSclList extends LitElement {
             </mwc-list-item>
           </mwc-list>`}
     `;
+  }
+
+  render(): TemplateResult {
+    return !this.items
+      ? this.renderLoadingBar()
+      : this.items.length <= 0
+      ? this.renderNoScls()
+      : this.renderSclList();
   }
 
   static styles = css`

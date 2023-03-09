@@ -9,7 +9,6 @@ export const de: Translations = {
     noScls: '???',
     sclFilter: '???:',
     noFilteredScls: '???',
-    noSclVersions: '???',
     sclType: '???',
     loading: {
       default: '???',
