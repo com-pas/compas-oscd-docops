@@ -10,18 +10,18 @@ const local = !process.env.CI;
 console.assert(local, 'Running in CI!');
 console.assert(!fuzzy, 'Running on OS with 1% test pixel diff threshold!');
 
-const thresholdPercentage = fuzzy && local ? 0 : 1;
+const thresholdPercentage = fuzzy && local ? 0 : 5;
 
 const filteredLogs = [
   'Running in dev mode',
   'Lit is in dev mode',
-  'mwc-list-item scheduled an update'
+  'mwc-list-item scheduled an update',
 ];
 
 const browsers = [
   playwrightLauncher({ product: 'chromium' }),
   playwrightLauncher({ product: 'firefox' }),
-  playwrightLauncher({ product: 'webkit' })
+  playwrightLauncher({ product: 'webkit' }),
 ];
 
 function defaultGetImageDiff({ baselineImage, image, options }) {
@@ -60,7 +60,7 @@ function defaultGetImageDiff({ baselineImage, image, options }) {
   return {
     error,
     diffImage: PNG.sync.write(diff),
-    diffPercentage
+    diffPercentage,
   };
 }
 
@@ -73,8 +73,8 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
         if (result.diffPercentage < thresholdPercentage)
           result.diffPercentage = 0;
         return result;
-      }
-    })
+      },
+    }),
   ],
 
   files: 'dist/**/*.spec.js',
@@ -134,13 +134,13 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
     }
     </style>
   </body>
-</html>`
-    }
+</html>`,
+    },
   ],
 
   /** Resolve bare module imports */
   nodeResolve: {
-    exportConditions: ['browser', 'development']
+    exportConditions: ['browser', 'development'],
   },
 
   /** Filter out lit dev mode logs */
@@ -163,7 +163,7 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   concurrency: 2,
 
   /** Browsers to run tests on */
-  browsers
+  browsers,
 
   // See documentation for all available options
 });

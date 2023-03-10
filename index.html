@@ -12,12 +12,11 @@
     <div id="demo"></div>
 
     <script type="module">
-      import { html, render } from 'lit';
-      import './dist/compas-open.js';
+      import { html, render } from 'lit-element';
+      import './dist/src/compas-ui/compas-open.js';
 
-      const title = 'Hello owc World!';
       render(
-        html` <compas-open .title=${title}> some light-dom </compas-open> `,
+        html` <compas-open> </compas-open> `,
         document.querySelector('#demo')
       );
     </script>
