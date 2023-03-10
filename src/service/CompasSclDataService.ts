@@ -1,4 +1,4 @@
-import { formatXml } from '../file.js';
+import { formatXml } from './helpers/file.js';
 
 import {
   extractSclFromResponse,
@@ -6,8 +6,8 @@ import {
   handleError,
   handleResponse,
   parseXml,
-} from './foundation.js';
-import { websocket } from './Websocket.js';
+} from './helpers/foundation.js';
+import { websocket } from './helpers/Websocket.js';
 
 export const SDS_NAMESPACE =
   'https://www.lfenergy.org/compas/SclDataService/v1';

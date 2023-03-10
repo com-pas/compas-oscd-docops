@@ -31,7 +31,7 @@ export function createCompasSclName(parent: Element, value: string): Element {
 
   const newSclNameElement = parent.ownerDocument.createElementNS(
     COMPAS_NAMESPACE,
-    COMPAS_PREFIX + ':SclName'
+    `${COMPAS_PREFIX}:SclName`
   );
   newSclNameElement.textContent = value;
   return newSclNameElement;
@@ -75,7 +75,7 @@ export function copyCompasSclFileType(
   }
 }
 
-export function getLabels(privateElement: Element): Element | null {
+export function getLabelsElement(privateElement: Element): Element | null {
   return (
     Array.from(privateElement.querySelectorAll(`:scope > Labels`)).find(
       element => element.namespaceURI === COMPAS_NAMESPACE
@@ -83,7 +83,7 @@ export function getLabels(privateElement: Element): Element | null {
   );
 }
 
-export function createLabels(privateElement: Element): Element {
+export function createLabelsElement(privateElement: Element): Element {
   // Make sure the prefix is available.
   addPrefixAndNamespaceToDocument(
     privateElement,
@@ -93,7 +93,7 @@ export function createLabels(privateElement: Element): Element {
 
   const labelsElement = privateElement.ownerDocument.createElementNS(
     COMPAS_NAMESPACE,
-    COMPAS_PREFIX + ':Labels'
+    `${COMPAS_PREFIX}:Labels`
   );
   return labelsElement;
 }
@@ -101,7 +101,7 @@ export function createLabels(privateElement: Element): Element {
 export function createLabel(labelsElement: Element, value: string): Element {
   const labelElement = labelsElement.ownerDocument.createElementNS(
     COMPAS_NAMESPACE,
-    COMPAS_PREFIX + ':Label'
+    `${COMPAS_PREFIX}:Label`
   );
   labelElement.textContent = value;
   labelsElement.append(labelElement);
@@ -113,8 +113,8 @@ export function copyCompasLabels(
   toParent: Element | null
 ): void {
   if (fromParent && toParent) {
-    const fromLabels = getLabels(fromParent);
-    const toLabels = getLabels(toParent);
+    const fromLabels = getLabelsElement(fromParent);
+    const toLabels = getLabelsElement(toParent);
 
     if (toLabels) {
       toParent.removeChild(toLabels);
@@ -133,10 +133,10 @@ export function addPrefixAndNamespaceToDocument(
   prefix: string
 ): void {
   const rootElement = element.ownerDocument.firstElementChild!;
-  if (!rootElement.hasAttribute('xmlns:' + prefix)) {
+  if (!rootElement.hasAttribute(`xmlns:${prefix}`)) {
     rootElement.setAttributeNS(
       'http://www.w3.org/2000/xmlns/',
-      'xmlns:' + prefix,
+      `xmlns:${prefix}`,
       namespace
     );
   }

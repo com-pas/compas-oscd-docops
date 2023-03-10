@@ -14,18 +14,6 @@ export function websocket(
 ): Promise<Document> {
   let websocketInstance: WebSocket | undefined;
 
-  async function sleep(sleepTime: number): Promise<unknown> {
-    return setTimeout(() => {
-      console.log();
-    }, sleepTime);
-  }
-
-  async function waitUntilExecuted(): Promise<void> {
-    while (websocketInstance !== undefined) {
-      await sleep(250);
-    }
-  }
-
   return new Promise<Document>((resolve, reject) => {
     websocketInstance = new WebSocket(url);
 
@@ -60,7 +48,5 @@ export function websocket(
     websocketInstance.onclose = () => {
       websocketInstance = undefined;
     };
-
-    // element.dispatchEvent(newPendingStateEvent(waitUntilExecuted()));
   });
 }

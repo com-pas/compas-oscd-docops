@@ -70,7 +70,7 @@ export class CompasSclList extends LitElement {
     });
   }
 
-  private renderLoadingBar(): TemplateResult {
+  private renderLoading(): TemplateResult {
     return html`
       <compas-loading
         .message=${translate('compas.loading.files')}
@@ -147,7 +147,7 @@ export class CompasSclList extends LitElement {
 
   render(): TemplateResult {
     return !this.items
-      ? this.renderLoadingBar()
+      ? this.renderLoading()
       : this.items.length <= 0
       ? this.renderNoScls()
       : this.renderSclList();

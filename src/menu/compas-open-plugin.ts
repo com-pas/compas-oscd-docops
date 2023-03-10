@@ -27,6 +27,16 @@ import '@material/mwc-dialog';
 import { buildDocName } from '../to-be-made-a-dependency/foundation.js';
 import { SclSelectedEvent } from '../compas-ui/helpers/compas-scl-list.js';
 import { TypeSelectedEvent } from '../compas-ui/helpers/compas-scl-type-list.js';
+/**
+ * A plugin that opens a dialog to select a SCL document from a list of SCL documents.
+ * @param allowLocalFile - If true, the user can select a local file to open.
+ * @param selectedType - The selected SCL type.
+ * @param sclTypes - The list of SCL types.
+ * @param items - The list of SCL documents.
+ * @param labels - The list of labels.
+ * @param selectedLabels - The list of selected labels.
+ * @param locale - The locale to use for translations.
+ */
 export default class CompasOpenMenuPlugin extends LitElement {
   @query('mwc-dialog#compas-open-dlg')
   dialog!: Dialog;
@@ -99,7 +109,7 @@ export default class CompasOpenMenuPlugin extends LitElement {
   private async getSclDocument(docId?: string): Promise<void> {
     const doc = await CompasSclDataService()
       .getSclDocument(this, this.selectedType ?? '', docId ?? '')
-      .catch(reason => console.log(this, reason));
+      .catch(reason => console.error(this, reason));
 
     if (doc instanceof Document) {
       const docName = buildDocName(doc.documentElement);

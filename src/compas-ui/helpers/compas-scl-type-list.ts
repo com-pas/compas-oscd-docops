@@ -31,22 +31,23 @@ export class CompasSclTypeList extends LitElement {
   @property()
   nameSpace = '';
 
-  render(): TemplateResult {
-    if (!this.sclTypes) {
-      return html`
-        <compas-loading
-          .message=${translate('compas.loading.types')}
-        ></compas-loading>
-      `;
-    }
-    if (this.sclTypes.length <= 0) {
-      return html` <mwc-list>
-        <mwc-list-item><i>${translate('compas.noSclTypes')}</i></mwc-list-item>
-      </mwc-list>`;
-    }
+  private renderLoading(): TemplateResult {
+    return html`
+      <compas-loading
+        .message=${translate('compas.loading.types')}
+      ></compas-loading>
+    `;
+  }
 
+  private renderNoTypes(): TemplateResult {
     return html` <mwc-list>
-      ${this.sclTypes.map(type => {
+      <mwc-list-item><i>${translate('compas.noSclTypes')}</i></mwc-list-item>
+    </mwc-list>`;
+  }
+
+  private renderTypes(): TemplateResult {
+    return html` <mwc-list>
+      ${this.sclTypes!.map(type => {
         const code =
           type.getElementsByTagNameNS(this.nameSpace, 'Code').item(0)!
             .textContent ?? '';
@@ -61,5 +62,13 @@ export class CompasSclTypeList extends LitElement {
         </mwc-list-item>`;
       })}
     </mwc-list>`;
+  }
+
+  render(): TemplateResult {
+    return !this.sclTypes
+      ? this.renderLoading()
+      : this.sclTypes.length <= 0
+      ? this.renderNoTypes()
+      : this.renderTypes();
   }
 }
