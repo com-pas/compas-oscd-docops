@@ -10,6 +10,8 @@
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "importHelpers": true,
+    "allowJs": true,
+    "skipLibCheck": true,
     "outDir": "dist",
     "sourceMap": true,
     "inlineSources": true,

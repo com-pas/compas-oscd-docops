@@ -3,16 +3,17 @@
   "description": "Webcomponent compas-open following open-wc recommendations",
   "license": "Apache-2.0",
   "version": "0.0.0",
-  "type": "module",
-  "main": "dist/compas-open.js",
-  "module": "dist/compas-open.js",
+  "main": "dist/menu/compas-open-plugin.js",
+  "module": "dist/menu/compas-open-plugin.js",
   "exports": {
-    ".": "./dist/compas-open.js"
+    ".": "./dist/menu/compas-open-plugin.js"
   },
+  "type": "module",
   "scripts": {
     "analyze": "cem analyze",
     "start": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wds\"",
-    "build": "tsc && npm run analyze -- --exclude dist",
+    "build": "rimraf dist &&tsc && npm run analyze -- --exclude dist",
+    "build:module": "rimraf dist && rollup -c rollup.config.js",
     "prepublish": "tsc && npm run analyze -- --exclude dist",
     "lint": "eslint --ext .ts,.html . --ignore-path .gitignore && prettier \"**/*.ts\" --check --ignore-path .gitignore",
     "format": "eslint --ext .ts,.html . --fix --ignore-path .gitignore && prettier \"**/*.ts\" --write --ignore-path .gitignore",
@@ -23,17 +24,30 @@
     "test:watch": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wtr --watch\"",
     "storybook": "tsc && npm run analyze -- --exclude dist && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wds -c .storybook/server.mjs\"",
     "storybook:build": "tsc && npm run analyze -- --exclude dist && build-storybook",
-    "deploy": "npm run storybook:build && gh-pages --dist 'storybook-static'"
+    "deploy": "npm run build && gh-pages --dist 'dist'"
   },
   "dependencies": {
-    "lit": "^2.0.2"
+    "@material/mwc-button": "0.22.1",
+    "@material/mwc-checkbox": "0.22.1",
+    "@material/mwc-dialog": "0.22.1",
+    "@material/mwc-formfield": "0.22.1",
+    "@material/mwc-icon": "0.22.1",
+    "@material/mwc-icon-button": "0.22.1",
+    "@material/mwc-list": "0.22.1",
+    "@material/mwc-textfield": "0.22.1",
+    "@openscd/open-scd-core": "^0.0.1-rc2.8",
+    "lit-element": "2.5.1",
+    "lit-html": "1.4.1",
+    "lit-translate": "^1.2.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
     "@custom-elements-manifest/analyzer": "^0.4.17",
+    "@open-wc/building-rollup": "^2.0.2",
     "@open-wc/eslint-config": "^8.0.2",
     "@open-wc/testing": "^3.1.6",
+    "@rollup/plugin-typescript": "^9.0.2",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
     "@web/dev-server": "^0.1.34",
@@ -45,66 +59,25 @@
     "concurrently": "^5.3.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-babel": "^5.3.1",
+    "eslint-plugin-tsdoc": "^0.2.17",
     "gh-pages": "^4.0.0",
     "husky": "^4.3.8",
     "lint-staged": "^10.5.4",
     "prettier": "^2.4.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.79.1",
+    "sinon": "11.1.2",
     "tslib": "^2.3.1",
-    "typescript": "^4.5.2"
+    "typescript": "^4.9.5"
   },
   "customElements": "custom-elements.json",
   "eslintConfig": {
-    "parser": "@typescript-eslint/parser",
     "extends": [
-      "@open-wc",
-      "prettier"
-    ],
-    "plugins": [
-      "@typescript-eslint"
-    ],
-    "rules": {
-      "no-unused-vars": "off",
-      "sort-imports": [
-        "error",
-        {
-          "ignoreCase": true,
-          "allowSeparatedGroups": true
-        }
-      ],
-      "class-methods-use-this": [
-        "error",
-        {
-          "exceptMethods": [
-            "locale"
-          ]
-        }
-      ],
-      "@typescript-eslint/no-explicit-any": [
-        "error",
-        {
-          "ignoreRestArgs": true
-        }
-      ],
-      "import/no-extraneous-dependencies": [
-        "error",
-        {
-          "devDependencies": [
-            "**/*.test.ts",
-            "**/*.spec.ts",
-            "**/*.stories.ts",
-            "**/*.config.js"
-          ]
-        }
-      ],
-      "import/no-unresolved": "off",
-      "import/extensions": [
-        "error",
-        "always",
-        {
-          "ignorePackages": true
-        }
-      ]
-    }
+      "@open-wc/eslint-config",
+      "eslint-config-prettier",
+      "ts-standard"
+    ]
   },
   "prettier": {
     "singleQuote": true,

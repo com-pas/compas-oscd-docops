@@ -12,6 +12,9 @@
 ## testing
 /coverage/
 
+## failed screenshots
+/screenshots/*/failed/
+
 ## temp folders
 /.tmp/
 
@@ -19,6 +22,7 @@
 /_site/
 /dist/
 /out-tsc/
+/.rollup.cache/
 
 storybook-static
 custom-elements.json
