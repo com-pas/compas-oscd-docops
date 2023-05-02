@@ -12,10 +12,10 @@ import {
 import '@material/mwc-icon';
 import '@material/mwc-list';
 import '@material/mwc-list/mwc-list-item';
+import '@openscd/oscd-filtered-list';
 import { translate } from 'lit-translate';
 
 import { SelectedItemsChangedEvent } from '../../to-be-made-a-dependency/oscd-filter-button.js';
-import '../../to-be-made-a-dependency/filtered-list.js';
 import '../../to-be-made-a-dependency/oscd-filter-button.js';
 import './compas-loading.js';
 
@@ -115,7 +115,7 @@ export class CompasSclList extends LitElement {
         </oscd-filter-button>
       </div>
       ${filteredItems && filteredItems.length > 0
-        ? html` <filtered-list>
+        ? html` <oscd-filtered-list>
             ${filteredItems.map(item => {
               const id =
                 item.getElementsByTagNameNS(this.nameSpace, 'Id').item(0)!
@@ -136,7 +136,7 @@ export class CompasSclList extends LitElement {
                 ${name} (${version})
               </mwc-list-item>`;
             })}
-          </filtered-list>`
+          </oscd-filtered-list>`
         : html` <mwc-list>
             <mwc-list-item>
               <i>${translate('compas.noFilteredScls')}</i>

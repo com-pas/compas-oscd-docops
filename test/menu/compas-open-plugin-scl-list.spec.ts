@@ -113,7 +113,7 @@ describe('compas-open-menu with compas-scl-list', () => {
       expect(
         plugin.shadowRoot
           ?.querySelector('compas-scl-list')
-          ?.shadowRoot?.querySelectorAll('filtered-list > mwc-list-item')
+          ?.shadowRoot?.querySelectorAll('oscd-filtered-list > mwc-list-item')
       ).to.have.length(2);
     });
 
@@ -132,7 +132,9 @@ describe('compas-open-menu with compas-scl-list', () => {
       (<ListItem>(
         plugin.shadowRoot
           ?.querySelector('compas-scl-list')
-          ?.shadowRoot?.querySelectorAll('filtered-list > mwc-list-item')[0]
+          ?.shadowRoot?.querySelectorAll(
+            'oscd-filtered-list > mwc-list-item'
+          )[0]
       )).click();
       await plugin.updateComplete;
 
@@ -204,7 +206,7 @@ describe('compas-open-menu with compas-scl-list', () => {
       expect(
         plugin.shadowRoot
           ?.querySelector('compas-scl-list')
-          ?.shadowRoot?.querySelectorAll('filtered-list > mwc-list-item')
+          ?.shadowRoot?.querySelectorAll('oscd-filtered-list > mwc-list-item')
       ).to.have.length(2);
     });
 
@@ -232,7 +234,7 @@ describe('compas-open-menu with compas-scl-list', () => {
       expect(
         plugin.shadowRoot
           ?.querySelector('compas-scl-list')
-          ?.shadowRoot?.querySelectorAll('filtered-list > mwc-list-item')
+          ?.shadowRoot?.querySelectorAll('oscd-filtered-list > mwc-list-item')
       ).to.have.length(1);
       await expect(plugin).shadowDom.to.equalSnapshot();
     });

@@ -12,9 +12,8 @@ import { get, translate } from 'lit-translate';
 import '@material/mwc-icon-button';
 import '@material/mwc-dialog';
 
-import './filtered-list.js';
-
-import { FilteredList } from './filtered-list.js';
+import '@openscd/oscd-filtered-list';
+import { OscdFilteredList } from '@openscd/oscd-filtered-list';
 import { Dialog } from '@material/mwc-dialog';
 
 export interface SelectedItemsChangedDetail {
@@ -37,7 +36,7 @@ function newSelectedItemsChangedEvent(
  * A mwc-list with mwc-textfield that filters the list items for given or separated terms
  */
 @customElement('oscd-filter-button')
-export class FilterButton extends FilteredList {
+export class FilterButton extends OscdFilteredList {
   @property()
   header!: TemplateResult | string;
   @property()
@@ -88,7 +87,7 @@ export class FilterButton extends FilteredList {
   }
 
   static styles = css`
-    ${unsafeCSS(FilteredList.styles)}
+    ${unsafeCSS(OscdFilteredList.styles)}
 
     mwc-icon-button {
       color: var(--mdc-theme-on-surface);
