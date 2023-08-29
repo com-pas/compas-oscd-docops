@@ -19,6 +19,10 @@ jobs:
       - name: Install playwright browsers
         run: npx playwright install --with-deps
 
+      - name: Build compas-open
+        working-directory: ./components/compas-open
+        run: npm run build
+
       - name: Run tests for compas-open
         working-directory: ./components/compas-open
         run: npm run-script test
