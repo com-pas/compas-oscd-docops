@@ -10,7 +10,7 @@
     "module": "esnext",
     "rootDir": "./",
     "outDir": "./dist",
-    "moduleResolution": "node16",
+    "moduleResolution": "node",
     "lib": ["es2017", "dom"],
     "allowSyntheticDefaultImports": true,
     "noEmitOnError": true,
