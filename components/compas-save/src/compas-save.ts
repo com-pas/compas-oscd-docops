@@ -3,7 +3,6 @@ import {
   html,
   LitElement,
   property,
-  PropertyValues,
   query,
   TemplateResult,
 } from "lit-element";
