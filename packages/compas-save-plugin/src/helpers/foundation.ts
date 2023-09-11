@@ -40,8 +40,11 @@ export function checkExistInCompas(
 }
 */
 
-export function checkExistInCompas(docName: string, docId?: string): boolean {
-  let exists = false;
+export function checkExistInCompas(
+  docName: string,
+  docId?: string
+): boolean | undefined {
+  let exists: boolean | undefined;
   if (docId) {
     const docType = getTypeFromDocName(docName);
     callService(docType, docId)

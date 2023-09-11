@@ -76,9 +76,6 @@ describe("compas-scltype-list", () => {
     });
 
     it("looks like the latest snapshot", async () => {
-      console.log(
-        "-=-=-=-=-=-=-=-=-=-" + plugin.shadowRoot?.children[0].tagName
-      );
       await expect(
         plugin.shadowRoot?.querySelector("compas-scltype-list")
       ).shadowDom.to.equalSnapshot();

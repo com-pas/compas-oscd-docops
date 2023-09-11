@@ -2,7 +2,6 @@ import { expect, fixtureSync, html, waitUntil } from "@open-wc/testing";
 import sinon from "sinon";
 
 import "../src/helpers/foundation.js";
-import { checkExistInCompas } from "../src/helpers/foundation.js";
 import { TextField } from "@material/mwc-textfield";
 import { CompasLabelsFieldElement } from "@com-pas/compas-save";
 import CompasSavePlugin from "../src/compas-save-plugin.js";
@@ -35,9 +34,6 @@ describe("compas-save-plugin", () => {
           .docId="${docId}"
         ></compas-save-plugin>`
       );
-      await element.updateComplete;
-
-      console.log(element.checkIfExists());
 
       sinon.stub(element, "checkIfExists").callsFake(async () => {
         // Do nothing so that it seems like loading from compas.
@@ -70,9 +66,7 @@ describe("compas-save-plugin", () => {
 
     it("when the name textfield is rendered then the value will be the stripped filename", () => {
       const textField = <TextField>(
-        element.compasSaveElement.shadowRoot!.querySelector(
-          "div#content > mwc-textfield#name"
-        )!
+        element.shadowRoot!.querySelector("div#content > mwc-textfield#name")!
       );
 
       expect(textField.value).to.be.equal("station123");
@@ -150,9 +144,7 @@ describe("compas-save-plugin", () => {
     expect(labelElements.length).to.be.equal(1);
 
     const labelsField = <CompasLabelsFieldElement>(
-      element.compasSaveElement.shadowRoot!.querySelector(
-        "compas-labels-field"
-      )!
+      element.shadowRoot!.querySelector("compas-labels-field")!
     );
 
     await addLabel(labelsField, "NewLabel");

@@ -1,8 +1,15 @@
-import { css, html, LitElement, TemplateResult } from "lit-element";
+import {
+  css,
+  html,
+  customElement,
+  LitElement,
+  TemplateResult,
+} from "lit-element";
 import { OscdTextfield } from "@openscd/oscd-textfield";
 
 import "@openscd/oscd-textfield";
 
+@customElement("compas-comment")
 export class CompasCommentElement extends LitElement {
   private getCommentField(): OscdTextfield {
     return <OscdTextfield>(
