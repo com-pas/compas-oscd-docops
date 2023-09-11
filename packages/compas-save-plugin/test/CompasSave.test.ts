@@ -1,6 +1,7 @@
 import { expect, fixtureSync, html, waitUntil } from "@open-wc/testing";
 import sinon from "sinon";
 
+import "../src/helpers/foundation.js";
 import { checkExistInCompas } from "../src/helpers/foundation.js";
 import { TextField } from "@material/mwc-textfield";
 import { CompasLabelsFieldElement } from "@com-pas/compas-save";
@@ -11,8 +12,8 @@ import "../src/compas-save-plugin.js";
 import { addLabel } from "./test-support.js";
 
 describe("compas-save-plugin", () => {
-  if (customElements.get("compare-save-plugin") === undefined)
-    customElements.define("compare-save-plugin", CompasSavePlugin);
+  if (customElements.get("compas-save-plugin") === undefined)
+    customElements.define("compas-save-plugin", CompasSavePlugin);
 
   let element: CompasSavePlugin;
   let doc: Document;
@@ -34,8 +35,14 @@ describe("compas-save-plugin", () => {
           .docId="${docId}"
         ></compas-save-plugin>`
       );
+      await element.updateComplete;
 
-      element.existInCompas = false;
+      console.log(element.checkIfExists());
+
+      sinon.stub(element, "checkIfExists").callsFake(async () => {
+        // Do nothing so that it seems like loading from compas.
+      });
+
       await element.updateComplete;
     });
 
@@ -50,18 +57,22 @@ describe("compas-save-plugin", () => {
         html`<compas-save-plugin
           .doc="${doc}"
           .docName="${docName}"
-          ?existsInCompas=${true}
         ></compas-save-plugin>`
       );
 
-      element.existInCompas = true;
+      sinon.stub(element, "checkIfExists").callsFake(() => {
+        element.existInCompas = false;
+      });
+
       await element.updateComplete;
       await waitUntil(() => element.existInCompas !== undefined);
     });
 
     it("when the name textfield is rendered then the value will be the stripped filename", () => {
       const textField = <TextField>(
-        element.shadowRoot!.querySelector("div#content > mwc-textfield#name")!
+        element.compasSaveElement.shadowRoot!.querySelector(
+          "div#content > mwc-textfield#name"
+        )!
       );
 
       expect(textField.value).to.be.equal("station123");
@@ -86,7 +97,10 @@ describe("compas-save-plugin", () => {
         ></compas-save-plugin>`
       );
 
-      element.existInCompas = false;
+      sinon.stub(element, "checkIfExists").callsFake(() => {
+        element.existInCompas = false;
+      });
+
       await element.updateComplete;
       await waitUntil(() => element.existInCompas !== undefined);
     });
@@ -106,7 +120,10 @@ describe("compas-save-plugin", () => {
         ></compas-save-plugin>`
       );
 
-      element.existInCompas = true;
+      sinon.stub(element, "checkIfExists").callsFake(() => {
+        element.existInCompas = true;
+      });
+
       await element.updateComplete;
       await waitUntil(() => element.existInCompas !== undefined);
     });
@@ -133,7 +150,9 @@ describe("compas-save-plugin", () => {
     expect(labelElements.length).to.be.equal(1);
 
     const labelsField = <CompasLabelsFieldElement>(
-      element.shadowRoot!.querySelector("compas-labels-field")!
+      element.compasSaveElement.shadowRoot!.querySelector(
+        "compas-labels-field"
+      )!
     );
 
     await addLabel(labelsField, "NewLabel");
