@@ -17,15 +17,13 @@ import "@material/mwc-icon-button";
 import "@material/mwc-icon";
 import "@material/mwc-dialog";
 
-import {
-  CompasSclDataService,
-  SDS_NAMESPACE,
-} from "./service/CompasSclDataService.js";
-import "./helpers/compas-scl-list.js";
-import "./helpers/compas-scl-type-list.js";
-import { buildDocName } from "./to-be-made-a-dependency/foundation.js";
-import { SclSelectedEvent } from "./helpers/compas-scl-list.js";
-import { TypeSelectedEvent } from "./helpers/compas-scl-type-list.js";
+import "@com-pas/compas-open-core/service";
+import { CompasSclDataService, SDS_NAMESPACE } from "@com-pas/compas-open-core";
+import "@com-pas/compas-scl-list";
+import "@com-pas/compas-scl-type-list";
+import { buildDocName } from "@com-pas/compas-open-core";
+import { SclSelectedEvent } from "@com-pas/compas-scl-list";
+import { TypeSelectedEvent } from "@com-pas/compas-scl-type-list";
 
 /**
  * A plugin that opens a dialog to select a SCL document from a list of SCL documents.

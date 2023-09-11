@@ -67,6 +67,7 @@ export class CompasOpenElement extends LitElement {
     `;
   }
 
+  //TODO: add wizard-devider
   render(): TemplateResult {
     return html`
       ${this.allowLocalFile

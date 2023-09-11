@@ -1,7 +1,7 @@
 import { html, TemplateResult } from "lit-element";
 import CompasOpenMenuPlugin from "../src/compas-open-plugin.js";
 import "../src/compas-open-plugin.js";
-import { parseXml } from "../src/service/helpers/foundation.js";
+import { parseXml } from "@com-pas/compas-open-core";
 import {
   BASIC_ITEM_LIST_RESPONSE,
   BASIC_TYPE_LIST_RESPONSE,

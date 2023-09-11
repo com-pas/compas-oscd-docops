@@ -1,4 +1,5 @@
-import { SDS_NAMESPACE } from "../src/service/CompasSclDataService.js";
+import "@com-pas/compas-open-core/service";
+import { SDS_NAMESPACE } from "@com-pas/compas-open-core";
 import sinon, { SinonStub } from "sinon";
 
 export const TYPE_ENTRY_ELEMENT_NAME = "Type";

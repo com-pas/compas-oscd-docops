@@ -25,6 +25,9 @@
     "@openscd/open-scd-core": "^0.0.2",
     "@openscd/oscd-filtered-list": "^1.1.1",
     "@com-pas/compas-open": "*",
+    "@com-pas/compas-scl-list": "*",
+    "@com-pas/compas-scl-type-list": "*",
+    "@com-pas/compas-open-core": "*",
     "lit": "^2.7.4",
     "lit-element": "2.5.1",
     "lit-html": "1.4.1"

@@ -13,7 +13,7 @@ import {
   stubFetchResponseFunction,
   TYPE_ENTRY_ELEMENT_NAME,
 } from "./CompasSclDataServiceResponses.js";
-import "../src/helpers/compas-scl-type-list.js";
+import "@com-pas/compas-scl-type-list";
 import CompasOpenMenuPlugin from "../src/compas-open-plugin.js";
 import "../src/compas-open-plugin.js";
 
@@ -76,6 +76,9 @@ describe("compas-scltype-list", () => {
     });
 
     it("looks like the latest snapshot", async () => {
+      console.log(
+        "-=-=-=-=-=-=-=-=-=-" + plugin.shadowRoot?.children[0].tagName
+      );
       await expect(
         plugin.shadowRoot?.querySelector("compas-scltype-list")
       ).shadowDom.to.equalSnapshot();

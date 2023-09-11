@@ -14,7 +14,7 @@ import {
   ITEM_LIST_WITH_LABELS_RESPONSE,
   stubFetchResponseFunction,
 } from "./CompasSclDataServiceResponses.js";
-import "../src/helpers/compas-scl-list.js";
+import "@com-pas/compas-scl-list";
 
 import CompasOpenMenuPlugin from "../src/compas-open-plugin.js";
 import "../src/compas-open-plugin.js";
