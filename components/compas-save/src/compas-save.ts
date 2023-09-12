@@ -11,7 +11,6 @@ import "@material/mwc-button";
 
 //import "../WizardDivider.js"; TODO
 
-import { CompasLabelsFieldElement } from "./helpers/CompasLabelsField.js";
 
 import {
   COMPAS_SCL_PRIVATE_TYPE,
@@ -39,29 +38,11 @@ export class CompasSaveElement extends LitElement {
   @property()
   allowLocalFile = true;
 
-  @query("compas-labels-field")
-  private labelsField!: CompasLabelsFieldElement;
-
-  updateLabels() {
-    const labelsField = this.parentElement?.querySelector(
-      "compas-labels-field"
-    );
-
-    if (labelsField) {
-      const sclElement = this.doc.documentElement;
-      const privateElement = getPrivate(sclElement, COMPAS_SCL_PRIVATE_TYPE);
-      (labelsField as CompasLabelsFieldElement).updateLabelsInPrivateElement(
-        privateElement!
-      );
-    }
-  }
-
   private renderSaveFilePart(): TemplateResult {
     return html`
       <mwc-button
         label="Save to file..."
         @click=${() => {
-          this.updateLabels();
           saveDocumentToFile(this.doc, this.docName);
 
           this.dispatchEvent(newSaveToFileEvent());

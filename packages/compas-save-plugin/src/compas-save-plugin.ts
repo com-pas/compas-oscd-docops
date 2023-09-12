@@ -31,8 +31,9 @@ import "./helpers/CompasChangeSetRadiogroup.js";
 import "./helpers/CompasComment.js";
 import "./helpers/CompasSclTypeSelect.js";
 
-import { CompasSaveElement, newSaveToFileEvent } from "@com-pas/compas-save";
+import { CompasSaveElement, newSaveToFileEvent, CompasLabelsFieldElement } from "@com-pas/compas-save";
 import "@com-pas/compas-save";
+
 
 export interface PendingStateDetail {
   promise: Promise<void>;
@@ -73,6 +74,9 @@ export default class CompasSaveMenuPlugin extends LitElement {
 
   @query("compas-comment")
   private commentField!: CompasCommentElement;
+
+  @query("compas-labels-field")
+  private labelsField!: CompasLabelsFieldElement;
 
   get docType() {
     return this.changeSetRadiogroup.getSelectedValue();
@@ -178,7 +182,7 @@ export default class CompasSaveMenuPlugin extends LitElement {
   }
 
   async saveToCompas(): Promise<void> {
-    this.compasSaveElement.updateLabels();
+    this.updateLabels();
     if (!this.docId || !this.existInCompas) {
       await this.addSclToCompas(this.doc);
     } else {
@@ -240,6 +244,14 @@ export default class CompasSaveMenuPlugin extends LitElement {
     ></compas-labels-field>`;
   }
 
+  updateLabels() {
+    const sclElement = this.doc.documentElement;
+    const privateElement = getPrivate(sclElement, COMPAS_SCL_PRIVATE_TYPE);
+    this.labelsField?.updateLabelsInPrivateElement(
+      privateElement!
+    );
+  }
+
   render(): TemplateResult {
     return html`<mwc-dialog id="compas-save-dlg" heading="Save project">
       ${this.existInCompas === undefined
@@ -251,6 +263,7 @@ export default class CompasSaveMenuPlugin extends LitElement {
               .docId="${this.docId}"
               .editCount=${this.editCount}
               @doc-saved=${() => {
+                this.updateLabels();
                 this.dialog.close();
               }}
             >

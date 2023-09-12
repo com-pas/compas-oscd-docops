@@ -150,7 +150,7 @@ describe("compas-save-plugin", () => {
     await addLabel(labelsField, "NewLabel");
     await element.updateComplete;
 
-    element.compasSaveElement["updateLabels"]();
+    element["updateLabels"]();
 
     labelElements = Array.from(
       element.doc.querySelectorAll(
