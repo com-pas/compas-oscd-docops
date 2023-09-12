@@ -1,16 +1,16 @@
 import { expect, fixture, html } from "@open-wc/testing";
 import "../src/CompasSave.js";
-import { CompasSaveElement } from "../src/CompasSave.js";
+import { CompasSaveToFileElement } from "../src/CompasSave.js";
 
-describe("compas-save", () => {
-  let component: CompasSaveElement;
+describe("compas-save-to-file", () => {
+  let component: CompasSaveToFileElement;
   let doc: Document;
   const docName = "station123.scd";
   const docId = "6a45ae97-5605-44f8-b4e6-25305bc6c036";
 
   describe("with no document loaded", () => {
     beforeEach(async () => {
-      component = await fixture(html`<compas-save></compas-save>`);
+      component = await fixture(html`<compas-save-to-file></compas-save-to-file>`);
       await component.updateComplete;
     });
 
@@ -26,11 +26,11 @@ describe("compas-save", () => {
         .then((str) => new DOMParser().parseFromString(str, "application/xml"));
 
       component = await fixture(
-        html`<compas-save
+        html`<compas-save-to-file
           .doc="${doc}"
           .docName="${docName}"
           .docId="${docId}"
-        ></compas-save>`
+        ></compas-save-to-file>`
       );
       await component.updateComplete;
     });

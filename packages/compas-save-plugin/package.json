@@ -22,7 +22,7 @@
   "dependencies": {
     "@material/mwc-button": "^0.27.0",
     "@material/mwc-dialog": "^0.27.0",
-    "@com-pas/compas-save": "*",
+    "@com-pas/compas-save-to-file": "*",
     "@com-pas/compas-open-core": "*",
     "lit": "^2.7.4",
     "lit-element": "2.5.1",

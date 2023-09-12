@@ -1,6 +1,6 @@
 {
-  "name": "@com-pas/compas-save",
-  "description": "Webcomponent compas-save following open-wc recommendations",
+  "name": "@com-pas/compas-save-to-file",
+  "description": "Webcomponent compas-save-to-file following open-wc recommendations",
   "license": "Apache-2.0",
   "author": "CoMPAS",
   "version": "0.0.0",

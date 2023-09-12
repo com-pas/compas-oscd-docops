@@ -31,8 +31,8 @@ import "./helpers/CompasChangeSetRadiogroup.js";
 import "./helpers/CompasComment.js";
 import "./helpers/CompasSclTypeSelect.js";
 
-import { CompasSaveElement, newSaveToFileEvent, CompasLabelsFieldElement } from "@com-pas/compas-save";
-import "@com-pas/compas-save";
+import { CompasSaveToFileElement, newSaveToFileEvent, CompasLabelsFieldElement } from "@com-pas/compas-save-to-file";
+import "@com-pas/compas-save-to-file";
 
 
 export interface PendingStateDetail {
@@ -93,8 +93,8 @@ export default class CompasSaveMenuPlugin extends LitElement {
   @query("mwc-dialog#compas-save-dlg")
   dialog!: Dialog;
 
-  @query("compas-save")
-  compasSaveElement!: CompasSaveElement;
+  @query("compas-save-to-file")
+  compasSaveToFileElement!: CompasSaveToFileElement;
 
   firstUpdated(): void {
     this.checkIfExists();
@@ -191,7 +191,7 @@ export default class CompasSaveMenuPlugin extends LitElement {
   }
 
   async run(): Promise<void> {
-    await this.compasSaveElement.requestUpdate();
+    await this.compasSaveToFileElement.requestUpdate();
     this.dialog.show();
   }
 
@@ -257,17 +257,15 @@ export default class CompasSaveMenuPlugin extends LitElement {
       ${this.existInCompas === undefined
         ? html`<compas-loading></compas-loading>`
         : html`
-            <compas-save
+            <compas-save-to-file
               .doc="${this.doc}"
               .docName="${this.docName}"
-              .docId="${this.docId}"
-              .editCount=${this.editCount}
               @doc-saved=${() => {
                 this.updateLabels();
                 this.dialog.close();
               }}
             >
-            </compas-save>
+            </compas-save-to-file>
             <wizard-divider></wizard-divider>
             <section>
               <h3>CoMPAS</h3>

@@ -3,7 +3,7 @@ import sinon from "sinon";
 
 import "../src/helpers/foundation.js";
 import { TextField } from "@material/mwc-textfield";
-import { CompasLabelsFieldElement } from "@com-pas/compas-save";
+import { CompasLabelsFieldElement } from "@com-pas/compas-save-to-file";
 import CompasSavePlugin from "../src/compas-save-plugin.js";
 
 import "../src/compas-save-plugin.js";

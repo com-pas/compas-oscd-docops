@@ -1,7 +1,7 @@
 import { Button } from "@material/mwc-button";
 
 import { OscdTextfield } from "@openscd/oscd-textfield";
-import { CompasLabelsFieldElement } from "@com-pas/compas-save";
+import { CompasLabelsFieldElement } from "@com-pas/compas-save-to-file";
 
 export async function addLabel(
   element: CompasLabelsFieldElement,

@@ -32,8 +32,8 @@ jobs:
         working-directory: ./packages/compas-open-plugin
         run: npm run-script test:unit
 
-      - name: Run unit tests for compas-save
-        working-directory: ./components/compas-save
+      - name: Run unit tests for compas-save-to-file
+        working-directory: ./components/compas-save-to-file
         run: npm run-script test:unit
 
       - name: Run unit tests for compas-save-plugin
@@ -77,13 +77,13 @@ jobs:
           message: "ci: update screenshots"
           add: "components/compas-open/screenshots"
 
-      - name: Run visual test for compas-save
-        working-directory: ./components/compas-save
+      - name: Run visual test for compas-save-to-file
+        working-directory: ./components/compas-save-to-file
         run: npm run-script test:visual
 
-      - name: Update screenshots for compas-save
+      - name: Update screenshots for compas-save-to-file
         if: failure()
-        working-directory: ./components/compas-save
+        working-directory: ./components/compas-save-to-file
         run: npm run test:update
 
       - name: Commit changes
@@ -91,4 +91,4 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           message: "ci: update screenshots"
-          add: "components/compas-save/screenshots"
+          add: "components/compas-save-to-file/screenshots"

@@ -30,7 +30,7 @@ export function newSaveToFileEvent(): SaveToFileEvent {
   });
 }
 
-export class CompasSaveElement extends LitElement {
+export class CompasSaveToFileElement extends LitElement {
   @property()
   doc!: XMLDocument;
   @property()

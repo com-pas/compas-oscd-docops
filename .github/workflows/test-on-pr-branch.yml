@@ -32,8 +32,8 @@ jobs:
         working-directory: ./packages/compas-open-plugin
         run: npm run-script test
 
-      - name: Run tests for compas-save
-        working-directory: ./components/compas-save
+      - name: Run tests for compas-save-to-file
+        working-directory: ./components/compas-save-to-file
         run: npm run-script test
 
       - name: Run tests for compas-save-plugin
