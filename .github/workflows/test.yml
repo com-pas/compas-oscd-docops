@@ -24,21 +24,9 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Run unit tests for compas-open
-        working-directory: ./components/compas-open
-        run: npm run-script test:unit
+      - name: Run unit tests for compas-docops
+        run: npx lerna run test:unit
 
-      - name: Run unit tests for compas-open-plugin
-        working-directory: ./packages/compas-open-plugin
-        run: npm run-script test:unit
-
-      - name: Run unit tests for compas-save-to-file
-        working-directory: ./components/compas-save-to-file
-        run: npm run-script test:unit
-
-      - name: Run unit tests for compas-save-plugin
-        working-directory: ./packages/compas-save-plugin
-        run: npm run-script test:unit
   visual:
     runs-on: ubuntu-latest
     steps:
@@ -76,19 +64,3 @@ jobs:
         with:
           message: "ci: update screenshots"
           add: "components/compas-open/screenshots"
-
-      - name: Run visual test for compas-save-to-file
-        working-directory: ./components/compas-save-to-file
-        run: npm run-script test:visual
-
-      - name: Update screenshots for compas-save-to-file
-        if: failure()
-        working-directory: ./components/compas-save-to-file
-        run: npm run test:update
-
-      - name: Commit changes
-        if: failure()
-        uses: EndBug/add-and-commit@v9
-        with:
-          message: "ci: update screenshots"
-          add: "components/compas-save-to-file/screenshots"

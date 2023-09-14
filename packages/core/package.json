@@ -21,11 +21,6 @@
     "prepublish": "tsc && npm run analyze -- --exclude dist",
     "lint": "eslint --ext .ts,.html . --ignore-path .gitignore && prettier \"**/*.ts\" --check --ignore-path .gitignore",
     "format": "eslint --ext .ts,.html . --fix --ignore-path .gitignore && prettier \"**/*.ts\" --write --ignore-path .gitignore",
-    "test": "tsc --p tsconfig.test.json && wtr --coverage",
-    "test:unit": "tsc --p tsconfig.test.json && wtr --group default",
-    "test:visual": "tsc --p tsconfig.test.json && wtr --group visual",
-    "test:update": "tsc --p tsconfig.test.json && wtr --group visual --update-visual-baseline",
-    "test:watch": "tsc --p tsconfig.test.json && concurrently -k -r \"tsc --p tsconfig.test.json --watch --preserveWatchOutput\" \"wtr --watch\"",
     "clean": "rimraf .tsbuildinfo custom-elements.json dist"
   },
   "dependencies": {

@@ -3,7 +3,7 @@ import { html } from "lit";
 import { visualDiff } from "@web/test-runner-visual-regression";
 
 import "../src/CompasOpen.js";
-import { CompasOpenElement } from "../src/CompasOpen.js";
+import type { CompasOpenElement } from "../src/CompasOpen.js";
 
 const factor = process.env.CI ? 2 : 1;
 

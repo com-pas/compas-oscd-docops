@@ -5,12 +5,11 @@ import {
   query,
   TemplateResult,
   property,
-  state,
 } from "lit-element";
 import { Dialog } from "@material/mwc-dialog";
 import { newOpenEvent } from "@openscd/open-scd-core";
 import "@com-pas/compas-open";
-import { DocRetrievedEvent } from "@com-pas/compas-open";
+import type { DocRetrievedEvent } from "@com-pas/compas-open";
 
 import "@material/mwc-button";
 import "@material/mwc-icon-button";
@@ -18,12 +17,15 @@ import "@material/mwc-icon";
 import "@material/mwc-dialog";
 
 import "@com-pas/compas-open-core/service";
-import { CompasSclDataService, SDS_NAMESPACE } from "@com-pas/compas-open-core";
+import {
+  CompasSclDataService,
+  SDS_NAMESPACE,
+  buildDocName,
+} from "@com-pas/compas-open-core";
 import "@com-pas/compas-scl-list";
 import "@com-pas/compas-scl-type-list";
-import { buildDocName } from "@com-pas/compas-open-core";
-import { SclSelectedEvent } from "@com-pas/compas-scl-list";
-import { TypeSelectedEvent } from "@com-pas/compas-scl-type-list";
+import type { SclSelectedEvent } from "@com-pas/compas-scl-list";
+import type { TypeSelectedEvent } from "@com-pas/compas-scl-type-list";
 
 /**
  * A plugin that opens a dialog to select a SCL document from a list of SCL documents.
@@ -38,20 +40,20 @@ import { TypeSelectedEvent } from "@com-pas/compas-scl-type-list";
 export default class CompasOpenMenuPlugin extends LitElement {
   @query("mwc-dialog#compas-open-dlg")
   dialog!: Dialog;
-  @property()
+  @property({ type: Boolean })
   allowLocalFile = true;
 
-  @property()
+  @property({ type: String })
   selectedType: string | undefined;
-  @property()
+  @property({ type: Array })
   sclTypes!: Element[];
-  @property()
+  @property({ type: Array })
   items: Element[] | undefined;
-  @property()
+  @property({ type: Array })
   labels: string[] = [];
-  @property()
+  @property({ type: Array })
   selectedLabels: string[] = [];
-  @property()
+  @property({ type: String })
   locale = "en";
 
   async run(): Promise<void> {

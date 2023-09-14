@@ -17,10 +17,10 @@ export function newTypeSelectedEvent(type: string): TypeSelectedEvent {
 }
 
 export class CompasSclTypeList extends LitElement {
-  @property()
+  @property({ type: Array })
   sclTypes: Element[] | undefined;
 
-  @property()
+  @property({ type: String })
   nameSpace = "";
 
   private renderLoading(): TemplateResult {

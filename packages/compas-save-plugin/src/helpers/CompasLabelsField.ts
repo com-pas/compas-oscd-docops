@@ -14,7 +14,7 @@ import "@material/mwc-list/mwc-list-item";
 import "@material/mwc-icon";
 import "@material/mwc-icon-button";
 
-import { OscdTextfield } from "@openscd/oscd-textfield";
+import type { OscdTextfield } from "@openscd/oscd-textfield";
 
 import "@openscd/oscd-textfield";
 
@@ -28,7 +28,7 @@ import {
 
 @customElement("compas-labels-field")
 export class CompasLabelsFieldElement extends LitElement {
-  @property()
+  @property({ type: Element })
   set privateElement(privateElement: Element) {
     this.originalLabelsElement = getLabels(privateElement);
     if (this.originalLabelsElement) {
@@ -40,10 +40,10 @@ export class CompasLabelsFieldElement extends LitElement {
     }
   }
 
-  @property()
+  @property({ type: Element })
   originalLabelsElement: Element | null = null;
 
-  @property()
+  @property({ type: Element })
   newLabelsElement!: Element;
 
   @state()
@@ -89,8 +89,8 @@ export class CompasLabelsFieldElement extends LitElement {
   render(): TemplateResult {
     const labels = this.labels;
     return html`
-      <div style="display: flex; flex-direction: row;">
-        <div style="flex: auto;">
+      <div id="labeldiv">
+        <div id="labeltextdiv">
           <oscd-textfield
             id="newLabel"
             label="Add new label"
@@ -101,7 +101,7 @@ export class CompasLabelsFieldElement extends LitElement {
           >
           </oscd-textfield>
         </div>
-        <div style="display: flex; align-items: center; height: 56px;">
+        <div id="labelicondiv">
           <mwc-icon-button
             icon="new_label"
             ?disabled="${labels.length >= COMPAS_LABELS_MAXIMUM}"
@@ -133,6 +133,21 @@ export class CompasLabelsFieldElement extends LitElement {
   static styles = css`
     oscd-textfield {
       width: 100%;
+    }
+
+    #labeldiv {
+      display: flex;
+      flex-direction: row;
+    }
+
+    #labeltextdiv {
+      flex: auto;
+    }
+
+    #labelicondiv {
+      display: flex;
+      align-items: center;
+      height: 56px;
     }
 
     mwc-list-item {

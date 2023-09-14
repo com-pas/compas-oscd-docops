@@ -1,6 +1,6 @@
 import { expect, fixtureSync, html } from "@open-wc/testing";
 
-import { CompasOpenElement } from "../src/CompasOpen.js";
+import type { CompasOpenElement } from "../src/CompasOpen.js";
 import "../src/CompasOpen.js";
 
 describe("compas-open", () => {

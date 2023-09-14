@@ -13,12 +13,6 @@ export type Mixin<T extends (...args: any[]) => any> = InstanceType<
   ReturnType<T>
 >;
 
-export function callService(docType: string, docId: string): Promise<Document> {
-  // Use the versions call to check if any exist, because then the document also exists
-  // And it saves bandwidth not to retrieve the whole document.
-  return CompasSclDataService().listSclVersions(docType, docId);
-}
-/*
 export function checkExistInCompas(
   docName: string,
   docId?: string
@@ -26,7 +20,8 @@ export function checkExistInCompas(
   return new Promise((resolve) => {
     if (docId) {
       const docType = getTypeFromDocName(docName);
-      callService(docType, docId)
+      CompasSclDataService()
+        .listSclVersions(docType, docId)
         .then(() => resolve(true))
         .catch((reason) => {
           if (reason.type === NOT_FOUND_ERROR) {
@@ -37,25 +32,4 @@ export function checkExistInCompas(
       resolve(false);
     }
   });
-}
-*/
-
-export function checkExistInCompas(
-  docName: string,
-  docId?: string
-): boolean | undefined {
-  let exists: boolean | undefined;
-  if (docId) {
-    const docType = getTypeFromDocName(docName);
-    callService(docType, docId)
-      .then(() => (exists = true))
-      .catch((reason) => {
-        if (reason.type === NOT_FOUND_ERROR) {
-          exists = false;
-        }
-      });
-  } else {
-    exists = false;
-  }
-  return exists;
 }

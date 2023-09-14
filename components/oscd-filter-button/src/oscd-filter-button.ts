@@ -33,7 +33,7 @@ function newSelectedItemsChangedEvent(
 /**
  * A mwc-list with mwc-textfield that filters the list items for given or separated terms
  */
-export class FilterButton extends OscdFilteredList {
+export class OscdFilterButton extends OscdFilteredList {
   @property()
   header!: TemplateResult | string;
   @property()

@@ -5,7 +5,7 @@ import "@material/mwc-list";
 import "@material/mwc-list/mwc-list-item";
 import "@openscd/oscd-filtered-list";
 
-import { SelectedItemsChangedEvent } from "@openscd/oscd-filter-button";
+import type { SelectedItemsChangedEvent } from "@openscd/oscd-filter-button";
 import "@openscd/oscd-filter-button";
 import "@com-pas/compas-loading";
 
@@ -23,21 +23,21 @@ export function newSclSelectedEvent(docId: string): SclSelectedEvent {
 }
 
 export class CompasSclList extends LitElement {
-  @property()
+  @property({ type: String })
   type?: string;
-  @property()
+  @property({ type: String })
   nameSpace = "";
 
-  @property()
+  @property({ type: Array })
   private items: Element[] | undefined;
 
-  @property()
+  @property({ type: Array })
   private labels: string[] = [];
 
-  @property()
+  @property({ type: Array })
   private selectedLabels: string[] = [];
 
-  @property()
+  @property({ type: Array })
   private get filteredItems(): Element[] | undefined {
     // If items are still being retrieved, return undefined.
     if (!this.items) {

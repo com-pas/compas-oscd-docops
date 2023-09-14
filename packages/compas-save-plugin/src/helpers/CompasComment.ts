@@ -2,6 +2,7 @@ import {
   css,
   html,
   customElement,
+  query,
   LitElement,
   TemplateResult,
 } from "lit-element";
@@ -11,24 +12,19 @@ import "@openscd/oscd-textfield";
 
 @customElement("compas-comment")
 export class CompasCommentElement extends LitElement {
-  private getCommentField(): OscdTextfield {
-    return <OscdTextfield>(
-      this.shadowRoot!.querySelector('oscd-textfield[id="comment"]')
-    );
-  }
+  @query("oscd-textfield#comment")
+  private commentField!: OscdTextfield;
 
   set value(value: string | null) {
-    const commentField = this.getCommentField();
-    commentField.maybeValue = value;
+    this.commentField.maybeValue = value;
   }
 
   get value(): string | null {
-    const commentField = this.getCommentField();
-    return commentField.maybeValue;
+    return this.commentField.maybeValue;
   }
 
   valid(): boolean {
-    return this.getCommentField().checkValidity();
+    return this.commentField?.checkValidity();
   }
 
   render(): TemplateResult {

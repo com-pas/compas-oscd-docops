@@ -8,11 +8,12 @@ import {
   state,
   TemplateResult,
 } from "lit-element";
+import { nothing } from "lit-html";
 import { TextFieldBase } from "@material/mwc-textfield/mwc-textfield-base";
 import "@material/mwc-button";
 import "@material/mwc-dialog";
 import "@com-pas/compas-loading";
-import { Dialog } from "@material/mwc-dialog";
+import type { Dialog } from "@material/mwc-dialog";
 import {
   CompasSclDataService,
   getTypeFromDocName,
@@ -23,17 +24,16 @@ import {
   COMPAS_SCL_PRIVATE_TYPE,
 } from "@com-pas/compas-open-core";
 import { checkExistInCompas } from "./helpers/foundation";
-import { CompasChangeSetRadiogroup } from "./helpers/CompasChangeSetRadiogroup.js";
-import { CompasSclTypeSelect } from "./helpers/CompasSclTypeSelect.js";
-import { CompasCommentElement } from "./helpers/CompasComment.js";
+import type { CompasChangeSetRadiogroup } from "./helpers/CompasChangeSetRadiogroup.js";
+import type { CompasSclTypeSelect } from "./helpers/CompasSclTypeSelect.js";
+import type { CompasCommentElement } from "./helpers/CompasComment.js";
+import type { CompasLabelsFieldElement } from "./helpers/CompasLabelsField.js";
+import { saveDocumentToFile } from "@com-pas/compas-open-core";
 
 import "./helpers/CompasChangeSetRadiogroup.js";
 import "./helpers/CompasComment.js";
 import "./helpers/CompasSclTypeSelect.js";
-
-import { CompasSaveToFileElement, newSaveToFileEvent, CompasLabelsFieldElement } from "@com-pas/compas-save-to-file";
-import "@com-pas/compas-save-to-file";
-
+import "./helpers/CompasLabelsField.js";
 
 export interface PendingStateDetail {
   promise: Promise<void>;
@@ -51,15 +51,26 @@ export function newPendingStateEvent(
   });
 }
 
+/* Event that will be used when an SCL Document is saved. */
+export type SaveToFileEvent = CustomEvent<void>;
+export function newSaveToFileEvent(): SaveToFileEvent {
+  return new CustomEvent<void>("doc-saved", {
+    bubbles: true,
+    composed: true,
+  });
+}
+
 export default class CompasSaveMenuPlugin extends LitElement {
-  @property()
+  @property({ type: XMLDocument })
   doc!: XMLDocument;
-  @property()
+  @property({ type: String })
   docName!: string;
-  @property()
+  @property({ type: String })
   docId?: string;
   @property({ type: Number })
   editCount = -1;
+  @property({ type: Boolean })
+  allowLocalFile = true;
   @state()
   existInCompas?: boolean;
 
@@ -78,30 +89,15 @@ export default class CompasSaveMenuPlugin extends LitElement {
   @query("compas-labels-field")
   private labelsField!: CompasLabelsFieldElement;
 
-  get docType() {
-    return this.changeSetRadiogroup.getSelectedValue();
-  }
-
-  get commentFieldValue() {
-    return this.commentField.value;
-  }
-
-  get nameFieldValue() {
-    return this.nameField.value;
-  }
-
   @query("mwc-dialog#compas-save-dlg")
   dialog!: Dialog;
-
-  @query("compas-save-to-file")
-  compasSaveToFileElement!: CompasSaveToFileElement;
 
   firstUpdated(): void {
     this.checkIfExists();
   }
 
-  checkIfExists(): void {
-    this.existInCompas = checkExistInCompas(this.docName, this.docId);
+  async checkIfExists(): Promise<void> {
+    this.existInCompas = await checkExistInCompas(this.docName, this.docId);
   }
 
   updated(_changedProperties: PropertyValues): void {
@@ -128,9 +124,9 @@ export default class CompasSaveMenuPlugin extends LitElement {
   }
 
   private async addSclToCompas(doc: XMLDocument): Promise<void> {
-    const name = stripExtensionFromName(this.nameFieldValue);
-    const comment = this.commentFieldValue;
-    const docType = this.docType ?? "";
+    const name = stripExtensionFromName(this.nameField.value);
+    const comment = this.commentField.value;
+    const docType = this.changeSetRadiogroup.getSelectedValue() ?? "";
 
     await CompasSclDataService()
       .addSclDocument(this, docType, {
@@ -165,8 +161,8 @@ export default class CompasSaveMenuPlugin extends LitElement {
     docName: string,
     doc: XMLDocument
   ): Promise<void> {
-    const changeSet = this.docType;
-    const comment = this.commentFieldValue;
+    const changeSet = this.changeSetRadiogroup.getSelectedValue();
+    const comment = this.commentField.value;
     const docType = getTypeFromDocName(docName);
 
     await CompasSclDataService()
@@ -191,8 +187,21 @@ export default class CompasSaveMenuPlugin extends LitElement {
   }
 
   async run(): Promise<void> {
-    await this.compasSaveToFileElement.requestUpdate();
     this.dialog.show();
+  }
+
+  private renderSaveFilePart(): TemplateResult {
+    return html`
+      <mwc-button
+        label="Save to file..."
+        @click=${() => {
+          saveDocumentToFile(this.doc, this.docName);
+
+          this.dispatchEvent(newSaveToFileEvent());
+        }}
+      >
+      </mwc-button>
+    `;
   }
 
   private renderSaveCompasPart(): TemplateResult {
@@ -247,9 +256,7 @@ export default class CompasSaveMenuPlugin extends LitElement {
   updateLabels() {
     const sclElement = this.doc.documentElement;
     const privateElement = getPrivate(sclElement, COMPAS_SCL_PRIVATE_TYPE);
-    this.labelsField?.updateLabelsInPrivateElement(
-      privateElement!
-    );
+    this.labelsField?.updateLabelsInPrivateElement(privateElement!);
   }
 
   render(): TemplateResult {
@@ -257,15 +264,13 @@ export default class CompasSaveMenuPlugin extends LitElement {
       ${this.existInCompas === undefined
         ? html`<compas-loading></compas-loading>`
         : html`
-            <compas-save-to-file
-              .doc="${this.doc}"
-              .docName="${this.docName}"
-              @doc-saved=${() => {
-                this.updateLabels();
-                this.dialog.close();
-              }}
-            >
-            </compas-save-to-file>
+            ${this.allowLocalFile
+              ? html` <wizard-divider></wizard-divider>
+                  <section>
+                    <h3>Local</h3>
+                    ${this.renderSaveFilePart()}
+                  </section>`
+              : nothing}
             <wizard-divider></wizard-divider>
             <section>
               <h3>CoMPAS</h3>
@@ -300,6 +305,11 @@ export default class CompasSaveMenuPlugin extends LitElement {
   }
 
   static styles = css`
+    #content > * {
+      display: block;
+      margin-top: 16px;
+    }
+
     mwc-dialog {
       --mdc-dialog-min-width: 23vw;
       --mdc-dialog-max-width: 92vw;

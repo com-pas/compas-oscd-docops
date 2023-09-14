@@ -3,7 +3,7 @@ import sinon from "sinon";
 
 import "../src/helpers/foundation.js";
 import { TextField } from "@material/mwc-textfield";
-import { CompasLabelsFieldElement } from "@com-pas/compas-save-to-file";
+import { CompasLabelsFieldElement } from "../src/helpers/CompasLabelsField.js";
 import CompasSavePlugin from "../src/compas-save-plugin.js";
 
 import "../src/compas-save-plugin.js";
@@ -18,6 +18,17 @@ describe("compas-save-plugin", () => {
   let doc: Document;
   const docName = "station123.scd";
   const docId = "6a45ae97-5605-44f8-b4e6-25305bc6c036";
+
+  describe("with no document loaded", () => {
+    beforeEach(async () => {
+      element = fixtureSync(html`<compas-save-plugin></compas-save-plugin>`);
+      await element.updateComplete;
+    });
+
+    it("looks like the latest snapshot", async () => {
+      await expect(element).to.equalSnapshot();
+    });
+  });
 
   beforeEach(async () => {
     doc = await fetch("/test/testfiles/save-compas.scd")
@@ -56,7 +67,7 @@ describe("compas-save-plugin", () => {
         ></compas-save-plugin>`
       );
 
-      sinon.stub(element, "checkIfExists").callsFake(() => {
+      sinon.stub(element, "checkIfExists").callsFake(async () => {
         element.existInCompas = false;
       });
 
@@ -91,7 +102,7 @@ describe("compas-save-plugin", () => {
         ></compas-save-plugin>`
       );
 
-      sinon.stub(element, "checkIfExists").callsFake(() => {
+      sinon.stub(element, "checkIfExists").callsFake(async () => {
         element.existInCompas = false;
       });
 
@@ -114,7 +125,7 @@ describe("compas-save-plugin", () => {
         ></compas-save-plugin>`
       );
 
-      sinon.stub(element, "checkIfExists").callsFake(() => {
+      sinon.stub(element, "checkIfExists").callsFake(async () => {
         element.existInCompas = true;
       });
 

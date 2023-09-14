@@ -3,8 +3,7 @@ import "@material/mwc-list";
 import "@material/mwc-list/mwc-list-item";
 
 export class CompasLoadingElement extends LitElement {
-  @property()
-  message: string | undefined;
+  @property({ type: String }) message?: string;
 
   render(): TemplateResult {
     return html`

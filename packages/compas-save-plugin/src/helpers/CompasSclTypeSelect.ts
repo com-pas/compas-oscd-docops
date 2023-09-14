@@ -17,10 +17,10 @@ import { repeat } from "lit-html/directives/repeat";
 
 @customElement("compas-scltype-select")
 export class CompasSclTypeSelect extends LitElement {
-  @property()
+  @property({ type: String })
   value = "";
 
-  @property()
+  @property({ type: Element })
   sclTypes?: Element[];
 
   firstUpdated(): void {

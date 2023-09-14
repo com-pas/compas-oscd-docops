@@ -25,7 +25,7 @@ export function newDocRetrievedEvent(
 }
 
 export class CompasOpenElement extends LitElement {
-  @property()
+  @property({ type: Boolean })
   allowLocalFile = true;
 
   @query("#scl-file")
