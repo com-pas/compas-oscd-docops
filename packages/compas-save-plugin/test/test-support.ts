@@ -1,7 +1,8 @@
 import { Button } from "@material/mwc-button";
 
 import { OscdTextfield } from "@openscd/oscd-textfield";
-import { CompasLabelsFieldElement } from "../src/helpers/CompasLabelsField.js";
+import "@com-pas/compas-docops-components";
+import { CompasLabelsFieldElement } from "@com-pas/compas-docops-components";
 
 export async function addLabel(
   element: CompasLabelsFieldElement,

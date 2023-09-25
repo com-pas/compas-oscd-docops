@@ -21,19 +21,17 @@ import {
   stripExtensionFromName,
   getPrivate,
   createPrivate,
+  saveDocumentToFile,
   COMPAS_SCL_PRIVATE_TYPE,
 } from "@com-pas/compas-open-core";
-import { checkExistInCompas } from "./helpers/foundation";
-import type { CompasChangeSetRadiogroup } from "./helpers/CompasChangeSetRadiogroup.js";
-import type { CompasSclTypeSelect } from "./helpers/CompasSclTypeSelect.js";
-import type { CompasCommentElement } from "./helpers/CompasComment.js";
-import type { CompasLabelsFieldElement } from "./helpers/CompasLabelsField.js";
-import { saveDocumentToFile } from "@com-pas/compas-open-core";
-
-import "./helpers/CompasChangeSetRadiogroup.js";
-import "./helpers/CompasComment.js";
-import "./helpers/CompasSclTypeSelect.js";
-import "./helpers/CompasLabelsField.js";
+import { checkExistInCompas } from "./foundation";
+import type {
+  CompasChangeSetRadiogroup,
+  CompasSclTypeSelect,
+  CompasCommentElement,
+  CompasLabelsFieldElement,
+} from "@com-pas/compas-docops-components";
+import "@com-pas/compas-docops-components";
 
 export interface PendingStateDetail {
   promise: Promise<void>;

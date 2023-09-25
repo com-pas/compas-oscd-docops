@@ -10,7 +10,6 @@ import { OscdTextfield } from "@openscd/oscd-textfield";
 
 import "@openscd/oscd-textfield";
 
-@customElement("compas-comment")
 export class CompasCommentElement extends LitElement {
   @query("oscd-textfield#comment")
   private commentField!: OscdTextfield;

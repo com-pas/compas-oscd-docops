@@ -1,9 +1,10 @@
 import { expect, fixtureSync, html, waitUntil } from "@open-wc/testing";
 import sinon from "sinon";
 
-import "../src/helpers/foundation.js";
+import "../src/foundation.js";
 import { TextField } from "@material/mwc-textfield";
-import { CompasLabelsFieldElement } from "../src/helpers/CompasLabelsField.js";
+import "@com-pas/compas-docops-components";
+import type { CompasLabelsFieldElement } from "@com-pas/compas-docops-components";
 import CompasSavePlugin from "../src/compas-save-plugin.js";
 
 import "../src/compas-save-plugin.js";

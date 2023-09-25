@@ -26,7 +26,6 @@ import {
   getLabels,
 } from "@com-pas/compas-open-core";
 
-@customElement("compas-labels-field")
 export class CompasLabelsFieldElement extends LitElement {
   @property({ type: Element })
   set privateElement(privateElement: Element) {

@@ -1,17 +1,8 @@
-import { LitElement } from "lit-element";
 import {
   getTypeFromDocName,
   CompasSclDataService,
   NOT_FOUND_ERROR,
 } from "@com-pas/compas-open-core";
-
-/** Constructor type for defining `LitElement` mixins. */
-export type LitElementConstructor = new (...args: any[]) => LitElement;
-
-/** The type returned by `MyMixin(...)` is `Mixin<typeof MyMixin>`. */
-export type Mixin<T extends (...args: any[]) => any> = InstanceType<
-  ReturnType<T>
->;
 
 export function checkExistInCompas(
   docName: string,

@@ -1,4 +1,4 @@
-import { customElement, html, LitElement, TemplateResult } from "lit-element";
+import { html, LitElement, TemplateResult } from "lit-element";
 import { ListItemBase } from "@material/mwc-list/mwc-list-item-base";
 
 import "@material/mwc-list";
@@ -15,7 +15,6 @@ const changeSetDetails = new Map<ChangeSet, ChangeSetDetail>([
   [ChangeSet.PATCH, { translationKey: "Patch change" }],
 ]);
 
-@customElement("compas-changeset-radiogroup")
 export class CompasChangeSetRadiogroup extends LitElement {
   private getSelectedListItem(): ListItemBase | null {
     return <ListItemBase>this.shadowRoot!.querySelector("mwc-list")!.selected;
