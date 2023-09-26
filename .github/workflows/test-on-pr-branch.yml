@@ -22,7 +22,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Build project
-        run: npm run build:all
+        run: npm run build
 
       - name: Run tests for compas-docops
         run: npx lerna run test

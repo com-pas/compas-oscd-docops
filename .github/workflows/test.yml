@@ -22,7 +22,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Build project
-        run: npm run build:all
+        run: npm run build
 
       - name: Run unit tests for compas-docops
         run: npx lerna run test:unit
@@ -47,7 +47,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Build project
-        run: npm run build:all
+        run: npm run build
 
       - name: Run visual test for compas-open
         working-directory: ./components/compas-open
