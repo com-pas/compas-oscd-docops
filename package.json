@@ -11,6 +11,7 @@
   "scripts": {
     "clean": "lerna run clean",
     "build": "lerna run build",
+    "build:all": "nx run-many -t build --all --skip-nx-cache --nx-bail",
     "start": "lerna run start --scope @com-pas/compas-open",
     "bundle": "lerna run clean && lerna run build && lerna run bundle"
   },
