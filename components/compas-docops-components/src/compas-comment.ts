@@ -6,7 +6,7 @@ import {
   LitElement,
   TemplateResult,
 } from "lit-element";
-import { OscdTextfield } from "@openscd/oscd-textfield";
+import type { OscdTextfield } from "@openscd/oscd-textfield";
 
 import "@openscd/oscd-textfield";
 

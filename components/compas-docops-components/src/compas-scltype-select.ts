@@ -12,7 +12,7 @@ import "@material/mwc-list/mwc-list-item";
 import "@material/mwc-select";
 
 import { CompasSclDataService, SDS_NAMESPACE } from "@com-pas/compas-open-core";
-import { Select } from "@material/mwc-select";
+import type { Select } from "@material/mwc-select";
 import { repeat } from "lit-html/directives/repeat";
 
 export class CompasSclTypeSelect extends LitElement {

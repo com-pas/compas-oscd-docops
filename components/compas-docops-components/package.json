@@ -26,6 +26,11 @@
   },
   "dependencies": {
     "@material/mwc-list": "^0.27.0",
+    "@material/mwc-icon": "^0.27.0",
+    "@material/mwc-icon-button": "^0.27.0",
+    "@material/mwc-select": "^0.27.0",
+    "@com-pas/compas-open-core": "*",
+    "@openscd/oscd-textfield": "*",
     "lit": "^2.7.4",
     "lit-element": "2.5.1",
     "lit-html": "1.4.1"
