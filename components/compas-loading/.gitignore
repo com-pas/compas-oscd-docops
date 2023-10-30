@@ -9,12 +9,6 @@
 /node_modules/
 /npm-debug.log
 
-## failed screenshots
-/screenshots/*/failed/
-
-## testing
-/coverage/
-
 ## local debug
 /.npmrc
 
@@ -27,7 +21,6 @@
 /out-tsc/
 /.tsbuildinfo
 
-storybook-static
 custom-elements.json
 
 .rollup.cache/

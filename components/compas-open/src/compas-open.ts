@@ -1,7 +1,6 @@
 import { html, LitElement, TemplateResult } from "lit";
 import { query, property } from "lit/decorators.js";
 import "@material/mwc-button";
-import { nothing } from "lit-html";
 
 /* Event that will be used when an SCL Document is retrieved. */
 export interface DocRetrievedDetail {
@@ -76,7 +75,7 @@ export class CompasOpenElement extends LitElement {
               <h3>Local</h3>
               ${this.renderFileSelect()}
             </section>`
-        : nothing}
+        : ""}
       <wizard-divider></wizard-divider>
       <section>
         <h3>CoMPAS</h3>

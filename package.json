@@ -1,6 +1,6 @@
 {
-  "name": "compas-open",
-  "description": "Webcomponent compas-open following open-wc recommendations",
+  "name": "@com-pas/oscd-docops",
+  "description": "Monorepo for plugins and components that fulfill CoMPAS-OpenSCD document operations",
   "license": "Apache-2.0",
   "version": "0.0.0",
   "type": "module",

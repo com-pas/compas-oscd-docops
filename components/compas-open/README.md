@@ -12,7 +12,7 @@ npm i compas-open
 
 ```html
 <script type="module">
-  import 'compas-open';
+  import "compas-open";
 </script>
 
 <compas-open></compas-open>
@@ -74,8 +74,4 @@ npm start
 
 To run a local development server that serves the basic demo located in `demo/index.html`
 
-
-
-
-
-&copy; 1970 THE AUTHORS
+&copy; 2023 Alliander N.V.
