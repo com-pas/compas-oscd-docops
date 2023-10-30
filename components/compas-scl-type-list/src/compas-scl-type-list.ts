@@ -24,9 +24,7 @@ export class CompasSclTypeList extends LitElement {
   nameSpace = "";
 
   private renderLoading(): TemplateResult {
-    return html`
-      <compas-loading .message="Loading" types...></compas-loading>
-    `;
+    return html` <compas-loading message="Loading types..."></compas-loading> `;
   }
 
   private renderNoTypes(): TemplateResult {

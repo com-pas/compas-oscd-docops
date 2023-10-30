@@ -23,6 +23,8 @@
     "test:visual": "tsc --p tsconfig.test.json && wtr --group visual",
     "test:update": "tsc --p tsconfig.test.json && wtr --group visual --update-visual-baseline",
     "test:watch": "tsc --p tsconfig.test.json && concurrently -k -r \"tsc --p tsconfig.test.json --watch --preserveWatchOutput\" \"wtr --watch\"",
+    "storybook": "tsc --p tsconfig.test.json && npm run analyze -- --exclude dist && concurrently -k -r \"tsc --p tsconfig.test.json --watch --preserveWatchOutput\" \"wds -c .storybook/server.mjs\"",
+    "storybook:build": "tsc --p tsconfig.test.json && npm run analyze -- --exclude dist && build-storybook",
     "clean": "rimraf .tsbuildinfo custom-elements.json dist"
   },
   "dependencies": {

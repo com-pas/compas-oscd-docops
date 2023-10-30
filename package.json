@@ -9,10 +9,9 @@
     "./components/*"
   ],
   "scripts": {
-    "clean": "lerna run clean",
-    "build": "lerna run build",
-    "build:all": "nx run-many -t build --all --skip-nx-cache --nx-bail",
-    "start": "lerna run start --scope @com-pas/compas-open",
+    "clean": "npx nx run-many -t clean",
+    "build": "npx nx run-many -t build",
+    "build:all": "npx nx run-many -t build --all --skip-nx-cache --nx-bail",
     "bundle": "lerna run clean && lerna run build && lerna run bundle"
   },
   "repository": {
@@ -34,6 +33,7 @@
     "ts-standard": "^12.0.2"
   },
   "devDependencies": {
-    "lerna": "^7.1.3"
+    "lerna": "^7.1.3",
+    "nx": "^16.10.0"
   }
 }

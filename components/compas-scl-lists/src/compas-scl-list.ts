@@ -60,9 +60,7 @@ export class CompasSclList extends LitElement {
   }
 
   private renderLoading(): TemplateResult {
-    return html`
-      <compas-loading .message="Loading" files...></compas-loading>
-    `;
+    return html` <compas-loading message="Loading files..."></compas-loading> `;
   }
 
   private renderNoScls(): TemplateResult {
