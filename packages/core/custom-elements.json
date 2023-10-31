@@ -1,0 +1,1121 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/compas-private.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "COMPAS_NAMESPACE",
+          "type": {
+            "text": "string"
+          },
+          "default": "\"https://www.lfenergy.org/compas/extension/v1\""
+        },
+        {
+          "kind": "variable",
+          "name": "COMPAS_PREFIX",
+          "type": {
+            "text": "string"
+          },
+          "default": "\"compas\""
+        },
+        {
+          "kind": "variable",
+          "name": "COMPAS_SCL_PRIVATE_TYPE",
+          "type": {
+            "text": "string"
+          },
+          "default": "\"compas_scl\""
+        },
+        {
+          "kind": "variable",
+          "name": "COMPAS_LABELS_MAXIMUM",
+          "type": {
+            "text": "number"
+          },
+          "default": "20"
+        },
+        {
+          "kind": "function",
+          "name": "getPrivate",
+          "return": {
+            "type": {
+              "text": "Element | null"
+            }
+          },
+          "parameters": [
+            {
+              "name": "parent",
+              "type": {
+                "text": "Element"
+              }
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "createPrivate",
+          "return": {
+            "type": {
+              "text": "Element"
+            }
+          },
+          "parameters": [
+            {
+              "name": "parent",
+              "type": {
+                "text": "Element"
+              }
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "getCompasSclName",
+          "return": {
+            "type": {
+              "text": "Element | null"
+            }
+          },
+          "parameters": [
+            {
+              "name": "privateElement",
+              "type": {
+                "text": "Element | null"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "createCompasSclName",
+          "return": {
+            "type": {
+              "text": "Element"
+            }
+          },
+          "parameters": [
+            {
+              "name": "parent",
+              "type": {
+                "text": "Element"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "copyCompasSclName",
+          "return": {
+            "type": {
+              "text": "void"
+            }
+          },
+          "parameters": [
+            {
+              "name": "fromParent",
+              "type": {
+                "text": "Element | null"
+              }
+            },
+            {
+              "name": "toParent",
+              "type": {
+                "text": "Element | null"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "getCompasSclFileType",
+          "return": {
+            "type": {
+              "text": "Element | null"
+            }
+          },
+          "parameters": [
+            {
+              "name": "privateElement",
+              "type": {
+                "text": "Element | null"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "copyCompasSclFileType",
+          "return": {
+            "type": {
+              "text": "void"
+            }
+          },
+          "parameters": [
+            {
+              "name": "fromParent",
+              "type": {
+                "text": "Element | null"
+              }
+            },
+            {
+              "name": "toParent",
+              "type": {
+                "text": "Element | null"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "getLabels",
+          "return": {
+            "type": {
+              "text": "Element | null"
+            }
+          },
+          "parameters": [
+            {
+              "name": "privateElement",
+              "type": {
+                "text": "Element"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "createLabels",
+          "return": {
+            "type": {
+              "text": "Element"
+            }
+          },
+          "parameters": [
+            {
+              "name": "privateElement",
+              "type": {
+                "text": "Element"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "createLabel",
+          "return": {
+            "type": {
+              "text": "Element"
+            }
+          },
+          "parameters": [
+            {
+              "name": "labelsElement",
+              "type": {
+                "text": "Element"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "copyCompasLabels",
+          "return": {
+            "type": {
+              "text": "void"
+            }
+          },
+          "parameters": [
+            {
+              "name": "fromParent",
+              "type": {
+                "text": "Element | null"
+              }
+            },
+            {
+              "name": "toParent",
+              "type": {
+                "text": "Element | null"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "addPrefixAndNamespaceToDocument",
+          "return": {
+            "type": {
+              "text": "void"
+            }
+          },
+          "parameters": [
+            {
+              "name": "element",
+              "type": {
+                "text": "Element"
+              }
+            },
+            {
+              "name": "namespace",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "prefix",
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "COMPAS_NAMESPACE",
+          "declaration": {
+            "name": "COMPAS_NAMESPACE",
+            "module": "src/compas-private.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "COMPAS_PREFIX",
+          "declaration": {
+            "name": "COMPAS_PREFIX",
+            "module": "src/compas-private.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "COMPAS_SCL_PRIVATE_TYPE",
+          "declaration": {
+            "name": "COMPAS_SCL_PRIVATE_TYPE",
+            "module": "src/compas-private.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "COMPAS_LABELS_MAXIMUM",
+          "declaration": {
+            "name": "COMPAS_LABELS_MAXIMUM",
+            "module": "src/compas-private.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "getPrivate",
+          "declaration": {
+            "name": "getPrivate",
+            "module": "src/compas-private.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "createPrivate",
+          "declaration": {
+            "name": "createPrivate",
+            "module": "src/compas-private.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "getCompasSclName",
+          "declaration": {
+            "name": "getCompasSclName",
+            "module": "src/compas-private.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "createCompasSclName",
+          "declaration": {
+            "name": "createCompasSclName",
+            "module": "src/compas-private.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "copyCompasSclName",
+          "declaration": {
+            "name": "copyCompasSclName",
+            "module": "src/compas-private.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "getCompasSclFileType",
+          "declaration": {
+            "name": "getCompasSclFileType",
+            "module": "src/compas-private.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "copyCompasSclFileType",
+          "declaration": {
+            "name": "copyCompasSclFileType",
+            "module": "src/compas-private.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "getLabels",
+          "declaration": {
+            "name": "getLabels",
+            "module": "src/compas-private.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "createLabels",
+          "declaration": {
+            "name": "createLabels",
+            "module": "src/compas-private.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "createLabel",
+          "declaration": {
+            "name": "createLabel",
+            "module": "src/compas-private.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "copyCompasLabels",
+          "declaration": {
+            "name": "copyCompasLabels",
+            "module": "src/compas-private.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "addPrefixAndNamespaceToDocument",
+          "declaration": {
+            "name": "addPrefixAndNamespaceToDocument",
+            "module": "src/compas-private.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/CoreTypes.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "buildDocName",
+          "declaration": {
+            "name": "buildDocName",
+            "module": "src/CoreTypes.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "getTypeFromDocName",
+          "declaration": {
+            "name": "getTypeFromDocName",
+            "module": "src/CoreTypes.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "stripExtensionFromName",
+          "declaration": {
+            "name": "stripExtensionFromName",
+            "module": "src/CoreTypes.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "updateDocumentInOpenSCD",
+          "declaration": {
+            "name": "updateDocumentInOpenSCD",
+            "module": "src/CoreTypes.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "COMPAS_SCL_PRIVATE_TYPE",
+          "declaration": {
+            "name": "COMPAS_SCL_PRIVATE_TYPE",
+            "module": "src/CoreTypes.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "createPrivate",
+          "declaration": {
+            "name": "createPrivate",
+            "module": "src/CoreTypes.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "getPrivate",
+          "declaration": {
+            "name": "getPrivate",
+            "module": "src/CoreTypes.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "COMPAS_LABELS_MAXIMUM",
+          "declaration": {
+            "name": "COMPAS_LABELS_MAXIMUM",
+            "module": "src/CoreTypes.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "COMPAS_NAMESPACE",
+          "declaration": {
+            "name": "COMPAS_NAMESPACE",
+            "module": "src/CoreTypes.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "createLabel",
+          "declaration": {
+            "name": "createLabel",
+            "module": "src/CoreTypes.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "createLabels",
+          "declaration": {
+            "name": "createLabels",
+            "module": "src/CoreTypes.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "getLabels",
+          "declaration": {
+            "name": "getLabels",
+            "module": "src/CoreTypes.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ChangeSet",
+          "declaration": {
+            "name": "ChangeSet",
+            "module": "src/CoreTypes.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "CompasSclDataService",
+          "declaration": {
+            "name": "CompasSclDataService",
+            "module": "src/CoreTypes.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SDS_NAMESPACE",
+          "declaration": {
+            "name": "SDS_NAMESPACE",
+            "module": "src/CoreTypes.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "parseXml",
+          "declaration": {
+            "name": "parseXml",
+            "module": "src/CoreTypes.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "NOT_FOUND_ERROR",
+          "declaration": {
+            "name": "NOT_FOUND_ERROR",
+            "module": "src/CoreTypes.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "saveDocumentToFile",
+          "declaration": {
+            "name": "saveDocumentToFile",
+            "module": "src/CoreTypes.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/foundation.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "getTypeFromDocName",
+          "return": {
+            "type": {
+              "text": "string"
+            }
+          },
+          "parameters": [
+            {
+              "name": "docName",
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "stripExtensionFromName",
+          "return": {
+            "type": {
+              "text": "string"
+            }
+          },
+          "parameters": [
+            {
+              "name": "docName",
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "buildDocName",
+          "return": {
+            "type": {
+              "text": "string"
+            }
+          },
+          "parameters": [
+            {
+              "name": "sclElement",
+              "type": {
+                "text": "Element"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "updateDocumentInOpenSCD",
+          "return": {
+            "type": {
+              "text": "void"
+            }
+          },
+          "parameters": [
+            {
+              "name": "element",
+              "type": {
+                "text": "Element"
+              }
+            },
+            {
+              "name": "doc",
+              "type": {
+                "text": "Document"
+              }
+            },
+            {
+              "name": "docName",
+              "optional": true,
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "getTypeFromDocName",
+          "declaration": {
+            "name": "getTypeFromDocName",
+            "module": "src/foundation.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "stripExtensionFromName",
+          "declaration": {
+            "name": "stripExtensionFromName",
+            "module": "src/foundation.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "buildDocName",
+          "declaration": {
+            "name": "buildDocName",
+            "module": "src/foundation.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "updateDocumentInOpenSCD",
+          "declaration": {
+            "name": "updateDocumentInOpenSCD",
+            "module": "src/foundation.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/service/CompasSclDataService.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "SDS_NAMESPACE",
+          "type": {
+            "text": "string"
+          },
+          "default": "'https://www.lfenergy.org/compas/SclDataService/v1'"
+        },
+        {
+          "kind": "function",
+          "name": "CompasSclDataService"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SDS_NAMESPACE",
+          "declaration": {
+            "name": "SDS_NAMESPACE",
+            "module": "src/service/CompasSclDataService.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "CompasSclDataService",
+          "declaration": {
+            "name": "CompasSclDataService",
+            "module": "src/service/CompasSclDataService.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/service/helpers/file.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "formatXml",
+          "return": {
+            "type": {
+              "text": "string"
+            }
+          },
+          "parameters": [
+            {
+              "name": "xml",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "tab",
+              "optional": true,
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "saveDocumentToFile",
+          "parameters": [
+            {
+              "name": "doc",
+              "type": {
+                "text": "Document | null"
+              }
+            },
+            {
+              "name": "docName",
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "formatXml",
+          "declaration": {
+            "name": "formatXml",
+            "module": "src/service/helpers/file.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "saveDocumentToFile",
+          "declaration": {
+            "name": "saveDocumentToFile",
+            "module": "src/service/helpers/file.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/service/helpers/foundation.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "NOT_FOUND_ERROR",
+          "type": {
+            "text": "string"
+          },
+          "default": "\"NotFoundError\""
+        },
+        {
+          "kind": "variable",
+          "name": "APPLICATION_ERROR",
+          "type": {
+            "text": "string"
+          },
+          "default": "\"ApplicationError\""
+        },
+        {
+          "kind": "variable",
+          "name": "SERVER_ERROR",
+          "type": {
+            "text": "string"
+          },
+          "default": "\"ServerError\""
+        },
+        {
+          "kind": "variable",
+          "name": "COMMONS_NAMESPACE",
+          "type": {
+            "text": "string"
+          },
+          "default": "\"https://www.lfenergy.org/compas/commons/v1\""
+        },
+        {
+          "kind": "function",
+          "name": "handleResponse",
+          "return": {
+            "type": {
+              "text": "Promise<string>"
+            }
+          },
+          "parameters": [
+            {
+              "name": "response",
+              "type": {
+                "text": "Response"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "processErrorMessage",
+          "return": {
+            "type": {
+              "text": "Promise<string>"
+            }
+          },
+          "parameters": [
+            {
+              "name": "response",
+              "type": {
+                "text": "Response"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "extractErrorMessage",
+          "return": {
+            "type": {
+              "text": "string | undefined"
+            }
+          },
+          "parameters": [
+            {
+              "name": "doc",
+              "type": {
+                "text": "Document"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "parseXml",
+          "return": {
+            "type": {
+              "text": "Promise<Document>"
+            }
+          },
+          "parameters": [
+            {
+              "name": "textContent",
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "extractSclFromResponse",
+          "return": {
+            "type": {
+              "text": "Promise<Document>"
+            }
+          },
+          "parameters": [
+            {
+              "name": "response",
+              "type": {
+                "text": "Document"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "handleError",
+          "return": {
+            "type": {
+              "text": "Promise<never>"
+            }
+          },
+          "parameters": [
+            {
+              "name": "error",
+              "type": {
+                "text": "Error"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "getWebsocketUri",
+          "return": {
+            "type": {
+              "text": "string"
+            }
+          },
+          "parameters": [
+            {
+              "name": "settingsUrl",
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "getWebsocketPort",
+          "return": {
+            "type": {
+              "text": "string"
+            }
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "NOT_FOUND_ERROR",
+          "declaration": {
+            "name": "NOT_FOUND_ERROR",
+            "module": "src/service/helpers/foundation.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "APPLICATION_ERROR",
+          "declaration": {
+            "name": "APPLICATION_ERROR",
+            "module": "src/service/helpers/foundation.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SERVER_ERROR",
+          "declaration": {
+            "name": "SERVER_ERROR",
+            "module": "src/service/helpers/foundation.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "COMMONS_NAMESPACE",
+          "declaration": {
+            "name": "COMMONS_NAMESPACE",
+            "module": "src/service/helpers/foundation.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "handleResponse",
+          "declaration": {
+            "name": "handleResponse",
+            "module": "src/service/helpers/foundation.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "processErrorMessage",
+          "declaration": {
+            "name": "processErrorMessage",
+            "module": "src/service/helpers/foundation.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "extractErrorMessage",
+          "declaration": {
+            "name": "extractErrorMessage",
+            "module": "src/service/helpers/foundation.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "parseXml",
+          "declaration": {
+            "name": "parseXml",
+            "module": "src/service/helpers/foundation.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "extractSclFromResponse",
+          "declaration": {
+            "name": "extractSclFromResponse",
+            "module": "src/service/helpers/foundation.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "handleError",
+          "declaration": {
+            "name": "handleError",
+            "module": "src/service/helpers/foundation.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "getWebsocketUri",
+          "declaration": {
+            "name": "getWebsocketUri",
+            "module": "src/service/helpers/foundation.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "getWebsocketPort",
+          "declaration": {
+            "name": "getWebsocketPort",
+            "module": "src/service/helpers/foundation.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/service/helpers/Websocket.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "websocket",
+          "return": {
+            "type": {
+              "text": "Promise<Document>"
+            }
+          },
+          "parameters": [
+            {
+              "name": "element",
+              "type": {
+                "text": "Element"
+              }
+            },
+            {
+              "name": "serviceName",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "url",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "request",
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "websocket",
+          "declaration": {
+            "name": "websocket",
+            "module": "src/service/helpers/Websocket.ts"
+          }
+        }
+      ]
+    }
+  ]
+}
