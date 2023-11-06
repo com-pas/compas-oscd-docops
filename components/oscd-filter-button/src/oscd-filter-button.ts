@@ -31,13 +31,23 @@ import {
   }
   
   /**
-   * A mwc-list with mwc-textfield that filters the list items for given or separated terms
+   * @prop {string} header - The header of the dialog.
+   * @prop {string} icon - The icon of the button.
+   * @prop {boolean} disabled - If true, the button is disabled.
+   * @slot - The default slot.
+   * @example <oscd-filter-button></oscd-filter-button>
+   * @summary Displays a button that opens a dialog with a list filterable by given search terms
+   * @tagname oscd-filter-button
+   * @cssprop --mdc-theme-on-surface - The color of the icon.
    */
   export class OscdFilterButton extends OscdFilteredList {
+    /** the header of the dialog. */
     @property()
     header!: TemplateResult | string;
+    /** the icon of the button. */
     @property()
     icon!: string;
+    /** if true, the button is disabled. */
     @property({ type: Boolean })
     disabled = false;
   
@@ -71,7 +81,7 @@ import {
         </mwc-icon-button>
         <mwc-dialog
           id="filterDialog"
-          heading="${this.header ? this.header : "Filter"}
+          heading="${this.header ? this.header : "Filter"}"
           scrimClickAction=""
           @closing="${() => this.onClosing()}"
         >

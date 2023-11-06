@@ -23,7 +23,17 @@ export function newDocRetrievedEvent(
   });
 }
 
+/**
+ * @prop {boolean} allowLocalFile - If true, the user can select a local file to open.
+ * @slot sclTypes - The list of SCL types.
+ * @slot sclList - The list of SCL documents.
+ * @slot - The default slot.
+ * @example <compas-open></compas-open>
+ * @summary Displays a file selector to open an SCL document and/or a list of SCL documents to open.
+ * @tagname compas-open
+ */
 export class CompasOpenElement extends LitElement {
+  /** if true, the user can select a local file to open. */
   @property({ type: Boolean })
   allowLocalFile = true;
 

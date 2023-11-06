@@ -40,22 +40,29 @@ import {
   export default class CompasOpenMenuPlugin extends LitElement {
     @query("mwc-dialog#compas-open-dlg")
     dialog!: Dialog;
+    /** if true, the user can select a local file to open */
     @property({ type: Boolean })
     allowLocalFile = true;
-  
+    /** the selected SCL type */
     @property({ type: String })
     selectedType: string | undefined;
+    /** the list of SCL types */
     @property({ type: Array })
     sclTypes!: Element[];
+    /** the list of SCL documents */
     @property({ type: Array })
     items: Element[] | undefined;
+    /** the list of labels */
     @property({ type: Array })
     labels: string[] = [];
+    /** the list of selected labels */
     @property({ type: Array })
     selectedLabels: string[] = [];
+    /** the locale to use for translations */
     @property({ type: String })
     locale = "en";
   
+    /** Run method to start the plugin. */
     async run(): Promise<void> {
       this.dialog.show();
     }

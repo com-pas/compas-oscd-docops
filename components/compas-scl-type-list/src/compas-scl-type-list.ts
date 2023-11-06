@@ -16,10 +16,18 @@ export function newTypeSelectedEvent(type: string): TypeSelectedEvent {
   });
 }
 
+/**
+ * @prop {Element[]} sclTypes - The list of SCL types.
+ * @prop {string} nameSpace - The namespace of the SCL types.
+ * @example <compas-scl-type-list></compas-scl-type-list>
+ * @summary Displays a list of SCL types.
+ * @tagname compas-scl-type-list
+ */
 export class CompasSclTypeList extends LitElement {
+  /** the list of SCL types. */
   @property({ type: Array })
   sclTypes: Element[] | undefined;
-
+  /** the namespace of the SCL types. */
   @property({ type: String })
   nameSpace = "";
 
