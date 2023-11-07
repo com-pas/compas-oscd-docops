@@ -10,6 +10,7 @@
   ],
   "scripts": {
     "clean": "npx nx run-many -t clean",
+    "test": "npx nx run-many -t test",
     "build": "npx nx run-many -t build",
     "build:all": "npx nx run-many -t build --all --skip-nx-cache --nx-bail",
     "bundle": "lerna run clean && lerna run build && lerna run bundle"
