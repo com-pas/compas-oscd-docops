@@ -29,13 +29,13 @@ import {
   
   /**
    * A plugin that opens a dialog to select a SCL document from a list of SCL documents.
-   * @param allowLocalFile - If true, the user can select a local file to open.
-   * @param selectedType - The selected SCL type.
-   * @param sclTypes - The list of SCL types.
-   * @param items - The list of SCL documents.
-   * @param labels - The list of labels.
-   * @param selectedLabels - The list of selected labels.
-   * @param locale - The locale to use for translations.
+   * @prop allowLocalFile - If true, the user can select a local file to open.
+   * @prop selectedType - The selected SCL type.
+   * @prop sclTypes - The list of SCL types.
+   * @prop items - The list of SCL documents.
+   * @prop labels - The list of labels.
+   * @prop selectedLabels - The list of selected labels.
+   * @prop locale - The locale to use for translations.
    */
   export default class CompasOpenMenuPlugin extends LitElement {
     @query("mwc-dialog#compas-open-dlg")
