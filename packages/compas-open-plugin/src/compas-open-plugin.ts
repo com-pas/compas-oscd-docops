@@ -36,6 +36,7 @@ import {
    * @prop labels - The list of labels.
    * @prop selectedLabels - The list of selected labels.
    * @prop locale - The locale to use for translations.
+   * @method run - Run method to start the plugin.
    */
   export default class CompasOpenMenuPlugin extends LitElement {
     @query("mwc-dialog#compas-open-dlg")
