@@ -21,4 +21,6 @@
 /out-tsc/
 /.tsbuildinfo
 
+custom-elements.json
+
 .rollup.cache/

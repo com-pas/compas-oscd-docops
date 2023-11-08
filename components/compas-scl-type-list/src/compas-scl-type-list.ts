@@ -16,23 +16,34 @@ export function newTypeSelectedEvent(type: string): TypeSelectedEvent {
   });
 }
 
+/**
+ * @prop {Element[]} sclTypes - The list of SCL types.
+ * @prop {string} nameSpace - The namespace of the SCL types.
+ * @example <compas-scl-type-list></compas-scl-type-list>
+ * @summary Displays a list of SCL types.
+ * @tagname compas-scl-type-list
+ */
 export class CompasSclTypeList extends LitElement {
+  /** the list of SCL types. */
   @property({ type: Array })
   sclTypes: Element[] | undefined;
-
+  /** the namespace of the SCL types. */
   @property({ type: String })
   nameSpace = "";
 
+  /** renders a loading message */
   private renderLoading(): TemplateResult {
     return html` <compas-loading message="Loading types..."></compas-loading> `;
   }
 
+  /** renders a message when no types are found */
   private renderNoTypes(): TemplateResult {
     return html` <mwc-list>
       <mwc-list-item><i>No types found in CoMPAS</i></mwc-list-item>
     </mwc-list>`;
   }
 
+  /** renders the list of types */
   private renderTypes(): TemplateResult {
     return html` <mwc-list>
       ${this.sclTypes!.map((type) => {

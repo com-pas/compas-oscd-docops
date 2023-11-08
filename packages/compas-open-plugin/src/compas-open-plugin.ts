@@ -29,33 +29,41 @@ import {
   
   /**
    * A plugin that opens a dialog to select a SCL document from a list of SCL documents.
-   * @param allowLocalFile - If true, the user can select a local file to open.
-   * @param selectedType - The selected SCL type.
-   * @param sclTypes - The list of SCL types.
-   * @param items - The list of SCL documents.
-   * @param labels - The list of labels.
-   * @param selectedLabels - The list of selected labels.
-   * @param locale - The locale to use for translations.
+   * @prop allowLocalFile - If true, the user can select a local file to open.
+   * @prop selectedType - The selected SCL type.
+   * @prop sclTypes - The list of SCL types.
+   * @prop items - The list of SCL documents.
+   * @prop labels - The list of labels.
+   * @prop selectedLabels - The list of selected labels.
+   * @prop locale - The locale to use for translations.
+   * @method run - Run method to start the plugin.
    */
   export default class CompasOpenMenuPlugin extends LitElement {
     @query("mwc-dialog#compas-open-dlg")
     dialog!: Dialog;
+    /** if true, the user can select a local file to open */
     @property({ type: Boolean })
     allowLocalFile = true;
-  
+    /** the selected SCL type */
     @property({ type: String })
     selectedType: string | undefined;
+    /** the list of SCL types */
     @property({ type: Array })
     sclTypes!: Element[];
+    /** the list of SCL documents */
     @property({ type: Array })
     items: Element[] | undefined;
+    /** the list of labels */
     @property({ type: Array })
     labels: string[] = [];
+    /** the list of selected labels */
     @property({ type: Array })
     selectedLabels: string[] = [];
+    /** the locale to use for translations */
     @property({ type: String })
     locale = "en";
   
+    /** Run method to start the plugin. */
     async run(): Promise<void> {
       this.dialog.show();
     }
@@ -104,6 +112,7 @@ import {
       }
     }
   
+    /** retrieves SCL document from the CompasSclDataService and triggers a "doc-retrieved" event */
     private async getSclDocument(docId?: string): Promise<void> {
       const doc = await CompasSclDataService()
         .getSclDocument(this, this.selectedType ?? "", docId ?? "")

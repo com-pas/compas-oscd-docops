@@ -22,21 +22,37 @@ export function newSclSelectedEvent(docId: string): SclSelectedEvent {
   });
 }
 
+/**
+ * @prop {string} type - The type of SCL to retrieve.
+ * @prop {string} nameSpace - The namespace of the SCL to retrieve.
+ * @prop {Element[]} items - The list of SCL documents.
+ * @prop {string[]} labels - The list of labels.
+ * @prop {string[]} selectedLabels - The list of selected labels.
+ * @prop {Element[]} filteredItems - The list of filtered SCL documents.
+ * @example <compas-scl-list></compas-scl-list>
+ * @summary Displays a list of SCL documents filterable by labels.
+ * @tagname compas-scl-list
+ * @cssprop --mdc-list-side-padding - The padding of the list.
+ * 
+ */
 export class CompasSclList extends LitElement {
+  /** the type of SCL to retrieve. */
   @property({ type: String })
   type?: string;
+  /** the namespace of the SCL to retrieve. */
   @property({ type: String })
   nameSpace = "";
-
+  /** the list of SCL documents. */
   @property({ type: Array })
   private items: Element[] | undefined;
-
+  /** the list of labels. */
   @property({ type: Array })
   private labels: string[] = [];
-
+  /** the list of selected labels. */
   @property({ type: Array })
   private selectedLabels: string[] = [];
 
+  /** the list of filtered SCL documents. */
   @property({ type: Array })
   private get filteredItems(): Element[] | undefined {
     // If items are still being retrieved, return undefined.
@@ -59,16 +75,19 @@ export class CompasSclList extends LitElement {
     });
   }
 
+  /** renders a loading message */
   private renderLoading(): TemplateResult {
     return html` <compas-loading message="Loading files..."></compas-loading> `;
   }
 
+  /** renders a message when no SCL documents are found */
   private renderNoScls(): TemplateResult {
     return html`<mwc-list>
       <mwc-list-item><i>No projects found in CoMPAS</i></mwc-list-item>
     </mwc-list>`;
   }
 
+  /** renders the list of SCL documents */
   private renderSclList(): TemplateResult {
     const { filteredItems } = this;
     return html`
@@ -81,7 +100,7 @@ export class CompasSclList extends LitElement {
           id="labelsFilter"
           multi="true"
           ?disabled="${this.labels.length <= 0}"
-          .header="Select"
+          header="Select"
           labels
           to
           be
