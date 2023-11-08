@@ -31,16 +31,19 @@ export class CompasSclTypeList extends LitElement {
   @property({ type: String })
   nameSpace = "";
 
+  /** renders a loading message */
   private renderLoading(): TemplateResult {
     return html` <compas-loading message="Loading types..."></compas-loading> `;
   }
 
+  /** renders a message when no types are found */
   private renderNoTypes(): TemplateResult {
     return html` <mwc-list>
       <mwc-list-item><i>No types found in CoMPAS</i></mwc-list-item>
     </mwc-list>`;
   }
 
+  /** renders the list of types */
   private renderTypes(): TemplateResult {
     return html` <mwc-list>
       ${this.sclTypes!.map((type) => {

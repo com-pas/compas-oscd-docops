@@ -51,13 +51,16 @@ import {
     @property({ type: Boolean })
     disabled = false;
   
+    /** the dialog element containing the list. */
     @query("#filterDialog")
     private filterDialog!: Dialog;
   
+    /** toggles the dialog containing the list. */
     private toggleList(): void {
       this.filterDialog.show();
     }
   
+    /** dispatches a "selected-items-changed" event when the dialog is closed. */
     private onClosing(): void {
       const selectedItems: string[] = [];
       if (this.selected) {

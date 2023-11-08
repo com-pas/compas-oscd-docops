@@ -37,9 +37,11 @@ export class CompasOpenElement extends LitElement {
   @property({ type: Boolean })
   allowLocalFile = true;
 
+  /** the file input element. */
   @query("#scl-file")
   private sclFileUI!: HTMLInputElement;
 
+  /** parses selected SCL document and triggers a "doc-retrieved" event */
   private async getSclFile(fileObj: {
     isLocal: boolean;
     evt: Event;
@@ -54,6 +56,7 @@ export class CompasOpenElement extends LitElement {
     this.dispatchEvent(newDocRetrievedEvent(true, doc, docName));
   }
 
+  /** renders the file selector */
   private renderFileSelect(): TemplateResult {
     return html`
       <input
@@ -76,7 +79,6 @@ export class CompasOpenElement extends LitElement {
     `;
   }
 
-  //TODO: add wizard-devider
   render(): TemplateResult {
     return html`
       ${this.allowLocalFile

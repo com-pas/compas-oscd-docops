@@ -112,6 +112,7 @@ import {
       }
     }
   
+    /** retrieves SCL document from the CompasSclDataService and triggers a "doc-retrieved" event */
     private async getSclDocument(docId?: string): Promise<void> {
       const doc = await CompasSclDataService()
         .getSclDocument(this, this.selectedType ?? "", docId ?? "")

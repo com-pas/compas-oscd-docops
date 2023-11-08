@@ -75,16 +75,19 @@ export class CompasSclList extends LitElement {
     });
   }
 
+  /** renders a loading message */
   private renderLoading(): TemplateResult {
     return html` <compas-loading message="Loading files..."></compas-loading> `;
   }
 
+  /** renders a message when no SCL documents are found */
   private renderNoScls(): TemplateResult {
     return html`<mwc-list>
       <mwc-list-item><i>No projects found in CoMPAS</i></mwc-list-item>
     </mwc-list>`;
   }
 
+  /** renders the list of SCL documents */
   private renderSclList(): TemplateResult {
     const { filteredItems } = this;
     return html`
