@@ -28,6 +28,7 @@ export function newSclSelectedEvent(docId: string): SclSelectedEvent {
  * @prop {Element[]} items - The list of SCL documents.
  * @prop {string[]} labels - The list of labels.
  * @prop {string[]} selectedLabels - The list of selected labels.
+ * @prop {Element[]} filteredItems - The list of filtered SCL documents.
  * @example <compas-scl-list></compas-scl-list>
  * @summary Displays a list of SCL documents filterable by labels.
  * @tagname compas-scl-list
@@ -51,6 +52,7 @@ export class CompasSclList extends LitElement {
   @property({ type: Array })
   private selectedLabels: string[] = [];
 
+  /** the list of filtered SCL documents. */
   @property({ type: Array })
   private get filteredItems(): Element[] | undefined {
     // If items are still being retrieved, return undefined.
