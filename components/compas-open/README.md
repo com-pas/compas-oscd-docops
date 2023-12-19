@@ -1,77 +1,71 @@
-# \<compas-open>
+## `src/compas-open.ts`:
 
-This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
+### class: `CompasOpenElement`, `compas-open`
 
-## Installation
+#### Superclass
 
-```bash
-npm i compas-open
-```
+| Name         | Module | Package |
+| ------------ | ------ | ------- |
+| `LitElement` |        | lit     |
 
-## Usage
+#### Fields
 
-```html
-<script type="module">
-  import "compas-open";
-</script>
+| Name             | Privacy | Type      | Default | Description                                        | Inherited From |
+| ---------------- | ------- | --------- | ------- | -------------------------------------------------- | -------------- |
+| `allowLocalFile` |         | `boolean` | `true`  | If true, the user can select a local file to open. |                |
 
-<compas-open></compas-open>
-```
+#### Slots
 
-## Linting and formatting
+| Name       | Description                |
+| ---------- | -------------------------- |
+| `sclTypes` | The list of SCL types.     |
+| `sclList`  | The list of SCL documents. |
+|            | The default slot.          |
 
-To scan the project for linting and formatting errors, run
+<details><summary>Private API</summary>
 
-```bash
-npm run lint
-```
+#### Fields
 
-To automatically fix linting and formatting errors, run
+| Name        | Privacy | Type               | Default | Description             | Inherited From |
+| ----------- | ------- | ------------------ | ------- | ----------------------- | -------------- |
+| `sclFileUI` | private | `HTMLInputElement` |         | the file input element. |                |
 
-```bash
-npm run format
-```
+#### Methods
 
-## Testing with Web Test Runner
+| Name               | Privacy | Description                                                       | Parameters                                                                     | Return           | Inherited From |
+| ------------------ | ------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------ | ---------------- | -------------- |
+| `getSclFile`       | private | parses selected SCL document and triggers a "doc-retrieved" event | `fileObj: {
+    isLocal: boolean;
+    evt: Event;
+    docId?: string;
+  }` | `Promise<void>`  |                |
+| `renderFileSelect` | private | renders the file selector                                         |                                                                                | `TemplateResult` |                |
 
-To execute a single test run:
+</details>
 
-```bash
-npm run test
-```
+<hr/>
 
-To run the tests in interactive watch mode run:
+### Functions
 
-```bash
-npm run test:watch
-```
+| Name                   | Description | Parameters                                                          | Return              |
+| ---------------------- | ----------- | ------------------------------------------------------------------- | ------------------- |
+| `newDocRetrievedEvent` |             | `localFile: boolean, doc: Document, docName: string, docId: string` | `DocRetrievedEvent` |
 
-## Demoing with Storybook
+<hr/>
 
-To run a local instance of Storybook for your component, run
+### Exports
 
-```bash
-npm run storybook
-```
+| Kind | Name                   | Declaration          | Module             | Package |
+| ---- | ---------------------- | -------------------- | ------------------ | ------- |
+| `js` | `newDocRetrievedEvent` | newDocRetrievedEvent | src/compas-open.ts |         |
+| `js` | `CompasOpenElement`    | CompasOpenElement    | src/compas-open.ts |         |
 
-To build a production version of Storybook, run
+## `src/CompasOpen.ts`:
 
-```bash
-npm run storybook:build
-```
+### Exports
 
-## Tooling configs
-
-For most of the tools, the configuration is in the `package.json` to reduce the amount of files in your project.
-
-If you customize the configuration a lot, you can consider moving them to individual files.
-
-## Local Demo with `web-dev-server`
-
-```bash
-npm start
-```
-
-To run a local development server that serves the basic demo located in `demo/index.html`
-
-&copy; 2023 Alliander N.V.
+| Kind                        | Name                | Declaration       | Module              | Package |
+| --------------------------- | ------------------- | ----------------- | ------------------- | ------- |
+| `custom-element-definition` | `compas-open`       | CompasOpenElement | /src/compas-open.js |         |
+| `js`                        | `CompasOpenElement` | CompasOpenElement | src/CompasOpen.ts   |         |
+| `js`                        | `DocRetrievedEvent` | DocRetrievedEvent | src/CompasOpen.ts   |         |

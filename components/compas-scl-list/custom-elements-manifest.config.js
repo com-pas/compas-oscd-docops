@@ -6,7 +6,7 @@ export default {
   litelement: true,
   plugins: [
     readmePlugin({
-      to: "components/compas-open/README.md",
+      to: "components/compas-scl-list/README.md",
     }),
   ],
 };
