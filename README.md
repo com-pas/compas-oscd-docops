@@ -1,8 +1,10 @@
-# CoMPAS OpenSCD Document Operations Monorepo
+# This repository is archived. Reach out if you think it needs to be reopened.
+
+## CoMPAS OpenSCD Document Operations Monorepo
 
 This repository hosts the components and plugins related to the (db-stored) SCL documents lifecycle management within the CoMPAS OpenSCD project.
 
-## Components and Plugins
+### Components and Plugins
 
 The following components are featured in this repository:
 
